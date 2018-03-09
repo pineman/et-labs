@@ -83,7 +83,7 @@
 				\begin{Large}\bfseries\textsc{Autores:}\end{Large}\\[0.4cm]
 				\begin{tabular}{l l l}
 					Ricardo Simões			& 70389 & \normalsize ricardo.f.d.simoes@ist.utl.pt \\
-					Rita Ramos					& 81616 & \normalsize	@tecnico.ulisboa.pt \\
+					Rita Ramos					& 81616 & \normalsize rita.ramos@tecnico.ulisboa.pt \\
 					João Pinheiro				& 84086 & \normalsize joao.castro.pinheiro@tecnico.ulisboa.pt \\
 					João Sebastião			& 84087 & \normalsize joaofpsebastiao@tecnico.ulisboa.pt \\
 				\end{tabular}
@@ -102,33 +102,42 @@
 	Segundo a analogia reo-elétrica, é possível estabelecer uma relação entre a capacidade de um condensador e a condutância elétrica quando a geometria do sistema é semelhante.
 	Sabe-se que na presença de uma corrente estacionária, a intensidade de corrente é dada por:
 
-	\begin{equation*}
+	\begin{align*}
 		\int _ { S } \vec{J} \cdot \vec{n} d S = I
-	\end{equation*}
+	\end{align*}
 
 	Na situação do ensaio da figura 2, a intensidade do campo elétrico é constante e este é paralelo à normal, obtendo assim:
 
-	\begin{equation*}
+	\begin{align*}
 		\vec{J} = \sigma \vec{E} \Rightarrow \int _ { S } \vec{J} \cdot \vec{n} d S = \int _ { S } \sigma \vec{E} \cdot \vec{n} d S  = \sigma E S = I
-	\end{equation*}
+	\end{align*}
 
 	Na presença de um campo elétrico estático, pela aplicação da Lei de Gauss, tem-se:
 
-	\begin{equation*}
+	\begin{align*}
 			\int _ { S } \vec{D} \cdot \vec{n} d S = Q
-	\end{equation*}
+	\end{align*}
 
 	Do mesmo modo, devido ao facto de a intensidade do campo elétrico ser constante e paralelo à normal, tem-se:
 
-	\begin{equation*}
+	\begin{align*}
 		\vec{J} = \epsilon \vec{E} \Rightarrow \int _ { S } \vec{D} \cdot \vec{n} d S = \int _ { S } \epsilon \vec{E} \cdot \vec{n} d S = \epsilon E S = Q
-	\end{equation*}
+	\end{align*}
 
 	Relacionando as expressões da capacidade de um condensador e condutância elétrica com as expressões obtidas acima, obtém-se:
 
-	\begin{equation*}
-		C =  \frac{Q}{U} = \frac{\epsilon E S}{U} G = \frac{I}{U} = \frac{\sigma E S}{U} \Rightarrow \frac{G}{C} = \frac{I}{Q} = \frac{\sigma}{\epsilon} \Rightarrow Q = I\frac{\epsilon}{\sigma}
-	\end{equation*}
+	\begin{align*}
+		&C =  \frac{Q}{U} = \frac{\epsilon E S}{U} \\
+		&G = \frac{I}{U} = \frac{\sigma E S}{U} \\ 
+		\Rightarrow &\frac{G}{C} = \frac{I}{Q} = \frac{\sigma}{\epsilon} \Rightarrow Q = I\frac{\epsilon}{\sigma}
+	\end{align*}
+	
+	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo dos potenciais, obtém-se:
+	
+	\begin{align*}
+		&V =  \frac{q}{2\pi\epsilon} \ln\left(\frac{r'}{r}\right) \\
+		\eq &V = \frac{Q}{2\pi\epsilon l} \ln\left(\frac{r'}{r}\right)
+	\end{align*}
 
 	\subsection{c)}
 
