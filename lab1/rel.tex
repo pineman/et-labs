@@ -132,18 +132,27 @@
 		\Rightarrow &\frac{G}{C} = \frac{I}{Q} = \frac{\sigma}{\epsilon} \Rightarrow Q = I\frac{\epsilon}{\sigma}
 	\end{align*}
 	
-	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo dos potenciais, tem-se:
+	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo do potencial entre um condutor i e um condutor j, tem-se:
 	
 	\begin{align*}
-		&V =  \frac{q}{2\pi\epsilon} \ln\left(\frac{r'}{r}\right) \\
-		\eq &V = \frac{Q}{2\pi\epsilon l} \ln\left(\frac{r'}{r}\right)
+		&V_{ij} =  \frac{q}{2\pi\epsilon} \ln\left(\frac{r'_{ij} }{r_{ij} }\right) \\
+		\eq &V_{ij}  = \frac{Q}{2\pi\epsilon l} \ln\left(\frac{r_{ij} '}{r_{ij} }\right)
 	\end{align*}
 	
-	Por aplicação da Lei de Ohm e fazendo as respetivas substituições, obtém-se finalmente:
+	Por aplicação da Lei de Ohm e fazendo as respetivas substituições, obtém-se finalmente a expressão para calcular os elementos da matriz dos coeficientes de resistência para o sistema de condutores:
 	
 	\begin{align*}
-		&R = \frac{V}{I} = \frac{\frac{Q}{2\pi\epsilon l} \ln\left(\frac{r'}{r}\right)}{I} = \frac{\frac{I\frac{\epsilon}{\sigma}}{2\pi\epsilon l} \ln\left(\frac{r'}{r}\right)}{I} = \frac{1}{2\pi\sigma l}\ln\left(\frac{r'}{r}\right)
+		&R_{ij}  = \frac{V_{ij} }{I} = \frac{\frac{Q}{2\pi\epsilon l} \ln\left(\frac{r'_{ij} }{r_{ij} }\right)}{I} = \frac{\frac{I\frac{\epsilon}{\sigma}}{2\pi\epsilon l} \ln\left(\frac{r'_{ij} }{r_{ij} }\right)}{I} = \frac{1}{2\pi\sigma l}\ln\left(\frac{r'_{ij} }{r_{ij} }\right)
 	\end{align*}
+	
+	Esta pode ser escrita na forma matricial
+	
+	\begin{align*}
+		[R] = \frac{1}{2\pi\sigma l} [K], onde [K] = \ln\left(\frac{r'_{ij} }{r_{ij} }\right) 
+	\end{align*}
+	
+	depende apenas raio dos condutores cilíndricos e das distâncias destes entre si e ao plano condutor.
+
 	
 	\subsection{c)}
 
