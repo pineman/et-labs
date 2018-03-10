@@ -1,5 +1,5 @@
 % !TEX encoding = UTF-8 Unicode
-\documentclass[portuguese, a4paper, titlepage]{article}
+\documentclass[portuguese, a4paper, fleqn]{article}
 \usepackage[margin=2.5cm]{geometry}
 %\usepackage{fontspec} % XeLaTeX
 \usepackage[T1]{fontenc} % LaTeX
@@ -99,6 +99,12 @@
 	\subsection{a)}
 
 	\subsection{b)}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{imagem.pdf}
+		\caption{Esquema para o método das imagens}
+		\label{fig:imagem}
+	\end{figure}
 	Segundo a analogia reo-elétrica, é possível estabelecer uma relação entre a capacidade de um condensador e a condutância elétrica quando a geometria do sistema é idêntica.
 	Sabe-se que na presença de uma corrente estacionária, a intensidade de corrente é dada por:
 
@@ -125,59 +131,57 @@
 	\end{align*}
 
 	Relacionando as expressões da capacidade de um condensador e condutância elétrica com as expressões obtidas acima, obtém-se:
-	
+
 	\begin{align*}
-  		\begin{cases}
-			G = \frac{I}{U} = \frac{\sigma E S}{U} \\
-    			C =  \frac{Q}{U} = \frac{\epsilon E S}{U}
+		\begin{cases}
+			G = \dfrac{I}{U} = \dfrac{\sigma E S}{U} \\[1em]
+    	C = \dfrac{Q}{U} = \dfrac{\epsilon E S}{U}
  		\end{cases}
 	\end{align*}
-	
+
 	\begin{align*}
-		\Rightarrow &\frac{G}{C} = \frac{I}{Q} = \frac{\sigma}{\epsilon} \Rightarrow Q = I\frac{\epsilon}{\sigma}
+		\Rightarrow &\dfrac{G}{C} = \dfrac{I}{Q} = \dfrac{\sigma}{\epsilon} \Rightarrow Q = I\dfrac{\epsilon}{\sigma}
 	\end{align*}
-	
-	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo do potencial entre condutores, tem-se:
-	
+	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo do potencial entre condutores filiformes, tem-se:
 	\begin{align*}
-		&V_{ij} =  \frac{q}{2\pi\epsilon} \ln\left(\frac{r'_{ij} }{r_{ij} }\right) \\
-		\eq &V_{ij}  = \frac{Q}{2\pi\epsilon l} \ln\left(\frac{r_{ij} '}{r_{ij} }\right)
+		V_{ij} = \dfrac{q}{2\pi\epsilon} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right) = \dfrac{Q}{2\pi\epsilon l} \ln\left(\dfrac{r_{ij} '}{r_{ij} }\right)
 	\end{align*}
-	
-	onde $r'_{ij}$ é a distância entre o condutor i e a imagem do condutor j e $r_{ij}$ é a distância real entre os condutores i e j. Por aplicação da Lei de Ohm e fazendo as respetivas substituições, obtém-se finalmente a expressão para calcular os elementos da matriz dos coeficientes de resistência para o sistema de condutores:
-	
+
+	Onde $r'_{ij}$ é a distância entre o condutor i e a imagem do condutor j e $r_{ij}$ é a distância real entre os condutores i e j. Por aplicação da Lei de Ohm e fazendo as respetivas substituições, obtém-se finalmente a expressão para calcular os elementos da matriz dos coeficientes de resistência para o sistema de condutores:
+
 	\begin{align*}
-		&R_{ij}  = \frac{V_{ij} }{I} = \frac{\frac{Q}{2\pi\epsilon l} \ln\left(\frac{r'_{ij} }{r_{ij} }\right)}{I} = \frac{\frac{I\frac{\epsilon}{\sigma}}{2\pi\epsilon l} \ln\left(\frac{r'_{ij} }{r_{ij} }\right)}{I} = \frac{1}{2\pi\sigma l}\ln\left(\frac{r'_{ij} }{r_{ij} }\right)
+		R_{ij} = \dfrac{V_{ij} }{I} &= \dfrac{\dfrac{Q}{2\pi\epsilon l} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right)}{I} = \\
+		&= \dfrac{\dfrac{I\dfrac{\epsilon}{\sigma}}{2\pi\epsilon l}}{I} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right) = \\
+		&= \dfrac{1}{2\pi\sigma l}\ln\left(\dfrac{r'_{ij} }{r_{ij} }\right)
 	\end{align*}
-	
-	Esta matriz pode ser escrita na forma
-	
+	Esta matriz pode ser escrita na forma:
 	\begin{align*}
-		[R] = \frac{1}{\sigma l} [K], [K] = \frac{1}{2 \pi} \ln\left(\frac{r'_{ij} }{r_{ij} }\right) 
+		&[R] = \dfrac{1}{\sigma l} [K] \\
+		&[k] = \dfrac{1}{2 \pi} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right)
 	\end{align*}
-	
-	onde $[K]$ depende apenas raio dos condutores cilíndricos e das distâncias destes entre si e ao plano condutor. Assim, com os dados fornecidos relativamente à posição relativa dos condutores, obtém-se a matriz $[K]$:
+
+	Onde $[K]$ depende apenas raio dos condutores cilíndricos e das distâncias destes entre si e ao plano condutor. Assim, com os dados fornecidos relativamente à posição relativa dos condutores, obtém-se a matriz $[K]$:
 
 	\begin{align*}
 		\begin{split}
-		[K] &= \frac{1}{2\pi}
+		[K] &= \dfrac{1}{2\pi}
 		\begin{bmatrix}
-			\ln\left(\frac{2h_1}{r_0}\right) & \ln\left(\frac{2h_1 + d}{d}\right)  \\
-			\ln\left(\frac{2h_1 + d}{d}\right) & \ln\left(\frac{2h_1 + d}{r_0}\right)  
+			\ln\left(\dfrac{2h_1}{r_0}\right) & \ln\left(\dfrac{2h_1 + d}{d}\right)  \\[1em]
+			\ln\left(\dfrac{2h_1 + d}{d}\right) & \ln\left(\dfrac{2h_1 + d}{r_0}\right)
 		\end{bmatrix} = \\
 		&= \begin{bmatrix}
-			0.547105466061146 & 0.239381352489734 \\
+			0.547115466061146 & 0.239381352489734 \\
 			0.239381352489734 & 0.619041132708855 \\
 		\end{bmatrix}
 		\end{split}
 		\end{align*}
-	
+
 	\subsection{c)}
-	
+
 		Para calcular a matriz inversa de $[K]$, ou seja $[K]^{-1}$, recorreu-se ao Matlab, obtendo assim:
-		
-		\begin{align*}	
-			[K]^{-1} = 
+
+		\begin{align*}
+			[K]^{-1} =
 			\begin{bmatrix}
 				2.200038917860650  & -0.850748462195038 \\
   				-0.850748462195038  & 1.944383424477395
@@ -185,17 +189,10 @@
 		\end{align*}
 
 	\subsection{d)}
-	
-	
+
+
 
 	\subsection{e)}
-
-	%\begin{figure}[h]
-	%	\centering
-	%	\includegraphics[width=0.6\linewidth]{figure.pdf}
-	%	\caption{An example figure}
-	%	\label{fig:figure-example}
-	%\end{figure}
 
 	%Ver \autoref{fig:figure-example}
 \end{document}
