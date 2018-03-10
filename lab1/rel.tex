@@ -105,6 +105,8 @@
 		\caption{Esquema para o método das imagens}
 		\label{fig:imagem}
 	\end{figure}
+
+	\par
 	Segundo a analogia reo-elétrica, é possível estabelecer uma relação entre a capacidade de um condensador e a condutância elétrica quando a geometria do sistema é idêntica.
 	Sabe-se que na presença de uma corrente estacionária, a intensidade de corrente é dada por:
 
@@ -112,24 +114,28 @@
 		\int _ { S } \vec{J} \cdot \vec{n} d S = I
 	\end{align*}
 
+	\par
 	Na situação do ensaio da figura 2, a intensidade do campo elétrico é constante e este é paralelo à normal, obtendo assim:
 
 	\begin{align*}
 		\vec{J} = \sigma \vec{E} \Rightarrow \int _ { S } \vec{J} \cdot \vec{n} d S = \int _ { S } \sigma \vec{E} \cdot \vec{n} d S  = \sigma E S = I
 	\end{align*}
 
+	\par
 	Na presença de um campo elétrico estático, pela aplicação da Lei de Gauss, tem-se:
 
 	\begin{align*}
 			\int _ { S } \vec{D} \cdot \vec{n} d S = Q
 	\end{align*}
 
+	\par
 	Do mesmo modo, devido ao facto de a intensidade do campo elétrico ser constante e paralelo à normal, tem-se:
 
 	\begin{align*}
 		\vec{J} = \epsilon \vec{E} \Rightarrow \int _ { S } \vec{D} \cdot \vec{n} d S = \int _ { S } \epsilon \vec{E} \cdot \vec{n} d S = \epsilon E S = Q
 	\end{align*}
 
+	\par
 	Relacionando as expressões da capacidade de um condensador e condutância elétrica com as expressões obtidas acima, obtém-se:
 
 	\begin{align*}
@@ -142,24 +148,30 @@
 	\begin{align*}
 		\Rightarrow &\dfrac{G}{C} = \dfrac{I}{Q} = \dfrac{\sigma}{\epsilon} \Rightarrow Q = I\dfrac{\epsilon}{\sigma}
 	\end{align*}
-	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo do potencial entre condutores filiformes, tem-se:
+
+	\par
+	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo do potencial entre condutores filiformes, tem-se
 	\begin{align*}
 		V_{ij} = \dfrac{q}{2\pi\epsilon} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right) = \dfrac{Q}{2\pi\epsilon l} \ln\left(\dfrac{r_{ij} '}{r_{ij} }\right)
 	\end{align*}
 
-	Onde $r'_{ij}$ é a distância entre o condutor i e a imagem do condutor j e $r_{ij}$ é a distância real entre os condutores i e j. Por aplicação da Lei de Ohm e fazendo as respetivas substituições, obtém-se finalmente a expressão para calcular os elementos da matriz dos coeficientes de resistência para o sistema de condutores:
+	\par
+	nde $r'_{ij}$ é a distância entre o condutor i e a imagem do condutor j e $r_{ij}$ é a distância real entre os condutores i e j. Por aplicação da Lei de Ohm e fazendo as respetivas substituições, obtém-se finalmente a expressão para calcular os elementos da matriz dos coeficientes de resistência para o sistema de condutores:
 
 	\begin{align*}
 		R_{ij} = \dfrac{V_{ij} }{I} &= \dfrac{\dfrac{Q}{2\pi\epsilon l} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right)}{I} = \\
 		&= \dfrac{\dfrac{I\dfrac{\epsilon}{\sigma}}{2\pi\epsilon l}}{I} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right) = \\
 		&= \dfrac{1}{2\pi\sigma l}\ln\left(\dfrac{r'_{ij} }{r_{ij} }\right)
 	\end{align*}
+
+	\par
 	Esta matriz pode ser escrita na forma:
 	\begin{align*}
 		&[R] = \dfrac{1}{\sigma l} [K] \\
 		&[K] = \dfrac{1}{2 \pi} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right)
 	\end{align*}
 
+	\par
 	Onde $[K]$ depende apenas raio dos condutores cilíndricos e das distâncias destes entre si e ao plano condutor. Assim, com os dados fornecidos relativamente à posição relativa dos condutores, obtém-se a matriz $[K]$:
 
 	\begin{align*}
@@ -178,19 +190,50 @@
 
 	\subsection{c)}
 
+		\par
 		Para calcular a matriz inversa de $[K]$, ou seja $[K]^{-1}$, recorreu-se ao Matlab, obtendo assim:
 
 		\begin{align*}
 			[K]^{-1} =
 			\begin{bmatrix}
 				2.200038917860650  & -0.850748462195038 \\
-  			-0.850748462195038 & 1.944383424477395
+  				-0.850748462195038 & 1.944383424477395
 			\end{bmatrix}
 		\end{align*}
 
 	\subsection{d)}
 
+		\par
+		Utilizando as matrizes calculadas anteriormente, sabe-se que:
+
+		\begin{align*}
+				&[U] = [R][I] \\
+			\eq &[I] = [G][I] = \sigma l [K]^{-1}[I]
+		\end{align*}
+
+		\par
+		Considerando $I = I_1 + I_2$ e $U_1 = U_2 = U$, retira-se: 
+
+		\begin{align*}
+				I &= I_1 + I_2 = \left( \sigma l\right) \lbrack \left(K^{-1}_{11}U_1 + K^{-1}_{12}U_2\right) + \left(K^{-1}_{21}U_1 + K^{-1}_{22}U_2\right)\rbrack \\
+				  &= \left( \sigma l\right) \lbrack \left(K^{-1}_{11} + K^{-1}_{12}\right)U + \left(K^{-1}_{21} + K^{-1}_{22}\right)U\rbrack \\
+				  &= \left( \sigma l\right) \lbrack \left(K^{-1}_{11} + K^{-1}_{12}\right) + \left(K^{-1}_{21} + K^{-1}_{22}\right)\rbrack U\\ \\
+	\Rightarrow U(I) &= \frac{I}{\sigma l \sum\limits_{i,j=1}^{2} K^{-1}_{ij}} 
+		\end{align*}
+
+		\par
+		Determinada a expressão de $U$ em função de $I$, é possível determinar a relação entre $I_1/I$ e $I_2/I$. Sabe-se, através da análise da equação matricial, que:
+
+		\begin{align*}
+				I_1 &= \left( \sigma l\right) \lbrack \left(K^{-1}_{11}U_1 + K^{-1}_{12}U_2\right)\rbrack = \left( \sigma l\right) \lbrack \left(K^{-1}_{11} + K^{-1}_{12} \right)	\rbrack U \Rightarrow \frac{I_1}{I} = \frac{K^{-1}_{11} + K^{-1}_{12}} {\sum\limits_{i,j=1}^{2} K^{-1}_{ij}} \\ \\
+				I_2 &= \left( \sigma l\right) \lbrack \left(K^{-1}_{21}U_1 + K^{-1}_{22}U_2\right)\rbrack = \left( \sigma l\right) \lbrack \left(K^{-1}_{21} + K^{-1}_{22} \right)	\rbrack U \Rightarrow \frac{I_2}{I} = \frac{K^{-1}_{21} + K^{-1}_{22}} {\sum\limits_{i,j=1}^{2} K^{-1}_{ij}}
+		\end{align*}
+
+
+
 	\subsection{e)}
+
+		\par
 		O ensaio é realizado a $\SI{1}{\kilo\hertz}$
 
 \end{document}
