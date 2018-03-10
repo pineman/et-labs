@@ -47,7 +47,6 @@
 \newcommand{\real}{\ensuremath{\mathds{R}}}
  % Operator "d", e.g., "\frac{\dx{f}}{\dx{x}} = "df/dx"
 \newcommand{\dx}[1]{\ensuremath{\operatorname{d}\!{#1}}}
-\usepackage[overload]{abraces} % for curvy \overbrace
 
 % Header and footer
 \usepackage{fancyhdr}
@@ -101,7 +100,7 @@
 	\subsection{a)}
 		\par
 		Assumindo que a água é um meio linear, $\vec{J} = \sigma \vec{E}$, e que $\vec{E}$ e $\vec{J}$ são uniformes dentro do tanque, então:
-		$$ U = RI \eq R = \dfrac{U}{I} = \dfrac{\int_{\tiny\overbrace[L1R]{(0)(4)}} \vec{E} \cdot d\vec{s}}{\int_{S_{(4)}}(\vec{J} \cdot \vec{n})dS} = \dfrac{aE}{\sigma Ewl} = \dfrac{a}{\sigma wl}$$
+		$$ U = RI \eq R = \dfrac{U}{I} = \dfrac{\int\limits_{\text{elec.}(4)}^{\text{elec.}(0)} \vec{E} \cdot d\vec{s}}{\int_{S_{(4)}}(\vec{J} \cdot \vec{n})dS} = \dfrac{aE}{\sigma Ewl} = \dfrac{a}{\sigma wl}$$
 		\par
 		Para determinar experimentalmente a condutividade $\sigma$ da água, mediremos $U$ e $I$, e então:
 		$$ R = \frac{U}{I} = \dfrac{a}{\sigma wl} \eq \sigma = \frac{I}{U} \dfrac{a}{wl}$$
