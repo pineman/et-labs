@@ -40,13 +40,14 @@
 \newcommand{\og}[1]{{\times \num{e#1}}}
 % Em um ponto, e.g. "f(x)\at{x=5}" = f(x)|x=5
 \newcommand{\at}[1]{\left.\right|_{#1}}
- % Para numerar apenas uma equação
+% Para numerar apenas uma equação
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 \DeclareMathOperator{\Div}{div}
 \DeclareMathOperator{\Rot}{rot}
 \newcommand{\real}{\ensuremath{\mathds{R}}}
  % Operator "d", e.g., "\frac{\dx{f}}{\dx{x}} = "df/dx"
 \newcommand{\dx}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\usepackage[overload]{abraces} % for curvy \overbrace
 
 % Header and footer
 \usepackage{fancyhdr}
@@ -68,13 +69,14 @@
 
 		\textsc{\large Engenharia Eletrotécnica e de Computadores}\\[0.5cm] % Major heading such as course name
 		\textsc{\Large Eletrotecnia Teórica}\\[0.5cm] % Minor heading such as course title
-		\textsc{\large 2017/2018 - 2º Ano - 2º Semestre}\\[2cm]
+		\textsc{\large 2017/2018 2º Semestre}\\[2cm]
 
 		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
 		\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
 			\textsc{\Huge \bfseries 1º Trabalho Laboratorial}\\[0.2cm]
 			\bigskip
-			\textsc{\large \bfseries Determinação Experimental Da Matriz De Coeficientes De Capacidade De Um Sistema De N+1 Condutores \\ (Via Analogia Reo-eléctrica)}\\[0.2cm]
+			\textsc{\large \bfseries Determinação Experimental Da Matriz De Coeficientes De Capacidade De Um Sistema De N+1 Condutores \\
+			(Via Analogia Reo-eléctrica)}\\[0.2cm]
 		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
 		\rule{\textwidth}{1.6pt}\\[5cm]
 
@@ -90,13 +92,19 @@
 			\end{flushleft}
 		\end{minipage}\\[0.5cm]
 
-		\large \bfseries Laboratório segunda-feira, 09h30-11h30\\
+		\large \bfseries Laboratório segunda-feira, 09h30-11h30, Grupo D\\
 		\large 12 de março de 2018\\[1cm]
 	\end{titlepage}
 	\hypersetup{pageanchor=true}
 
 	\section{Dimensionamento}
 	\subsection{a)}
+		\par
+		Assumindo que a água é um meio linear, $\vec{J} = \sigma \vec{E}$, e que $\vec{E}$ e $\vec{J}$ são uniformes dentro do tanque, então:
+		$$ U = RI \eq R = \dfrac{U}{I} = \dfrac{\int_{\tiny\overbrace[L1R]{(0)(4)}} \vec{E} \cdot d\vec{s}}{\int_{S_{(4)}}(\vec{J} \cdot \vec{n})dS} = \dfrac{aE}{\sigma Ewl} = \dfrac{a}{\sigma wl}$$
+		\par
+		Para determinar experimentalmente a condutividade $\sigma$ da água, mediremos $U$ e $I$, e então:
+		$$ R = \frac{U}{I} = \dfrac{a}{\sigma wl} \eq \sigma = \frac{I}{U} \dfrac{a}{wl}$$
 
 	\subsection{b)}
 	\begin{figure}[h]
@@ -150,7 +158,8 @@
 	\end{align*}
 
 	\par
-	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo do potencial entre condutores filiformes, tem-se
+	Recorrendo ao método das imagens e usando a expressão obtida no laboratório inicial para o cálculo do potencial entre condutores filiformes, tem-se:
+
 	\begin{align*}
 		V_{ij} = \dfrac{q}{2\pi\epsilon} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right) = \dfrac{Q}{2\pi\epsilon l} \ln\left(\dfrac{r_{ij} '}{r_{ij} }\right)
 	\end{align*}
@@ -166,6 +175,7 @@
 
 	\par
 	Esta matriz pode ser escrita na forma:
+
 	\begin{align*}
 		&[R] = \dfrac{1}{\sigma l} [K] \\
 		&[K] = \dfrac{1}{2 \pi} \ln\left(\dfrac{r'_{ij} }{r_{ij} }\right)
@@ -212,28 +222,27 @@
 		\end{align*}
 
 		\par
-		Considerando $I = I_1 + I_2$ e $U_1 = U_2 = U$, retira-se: 
+		Considerando $I = I_1 + I_2$ e $U_1 = U_2 = U$, retira-se:
 
 		\begin{align*}
-				I &= I_1 + I_2 = \left( \sigma l\right) \lbrack \left(K^{-1}_{11}U_1 + K^{-1}_{12}U_2\right) + \left(K^{-1}_{21}U_1 + K^{-1}_{22}U_2\right)\rbrack \\
-				  &= \left( \sigma l\right) \lbrack \left(K^{-1}_{11} + K^{-1}_{12}\right)U + \left(K^{-1}_{21} + K^{-1}_{22}\right)U\rbrack \\
-				  &= \left( \sigma l\right) \lbrack \left(K^{-1}_{11} + K^{-1}_{12}\right) + \left(K^{-1}_{21} + K^{-1}_{22}\right)\rbrack U\\ \\
-	\Rightarrow U(I) &= \frac{I}{\sigma l \sum\limits_{i,j=1}^{2} K^{-1}_{ij}} 
+			I &= I_1 + I_2 = \sigma l \left[ \left(K^{-1}_{11}U_1 + K^{-1}_{12}U_2\right) + \left(K^{-1}_{21}U_1 + K^{-1}_{22}U_2\right) \right] \\
+				&= \sigma l \left[ \left(K^{-1}_{11} + K^{-1}_{12}\right)U + \left(K^{-1}_{21} + K^{-1}_{22}\right)U \right] \\
+				&= \sigma l \left( K^{-1}_{11} + K^{-1}_{12} + K^{-1}_{21} + K^{-1}_{22} \right) U\\ \\
+			\Rightarrow U(I) &= \frac{I}{\sigma l \sum\limits_{i,j=1}^{2} K^{-1}_{ij}}
 		\end{align*}
 
 		\par
 		Determinada a expressão de $U$ em função de $I$, é possível determinar a relação entre $I_1/I$ e $I_2/I$. Sabe-se, através da análise da equação matricial, que:
 
 		\begin{align*}
-				I_1 &= \left( \sigma l\right) \lbrack \left(K^{-1}_{11}U_1 + K^{-1}_{12}U_2\right)\rbrack = \left( \sigma l\right) \lbrack \left(K^{-1}_{11} + K^{-1}_{12} \right)	\rbrack U \Rightarrow \frac{I_1}{I} = \frac{K^{-1}_{11} + K^{-1}_{12}} {\sum\limits_{i,j=1}^{2} K^{-1}_{ij}} \\ \\
-				I_2 &= \left( \sigma l\right) \lbrack \left(K^{-1}_{21}U_1 + K^{-1}_{22}U_2\right)\rbrack = \left( \sigma l\right) \lbrack \left(K^{-1}_{21} + K^{-1}_{22} \right)	\rbrack U \Rightarrow \frac{I_2}{I} = \frac{K^{-1}_{21} + K^{-1}_{22}} {\sum\limits_{i,j=1}^{2} K^{-1}_{ij}}
+				I_1 &= \sigma l \left(K^{-1}_{11}U_1 + K^{-1}_{12}U_2\right) = \sigma l \left(K^{-1}_{11} + K^{-1}_{12} \right)	U \Rightarrow \frac{I_1}{I} = \frac{K^{-1}_{11} + K^{-1}_{12}} {\sum\limits_{i,j=1}^{2} K^{-1}_{ij}} \\ \\
+				I_2 &= \sigma l \left(K^{-1}_{21}U_1 + K^{-1}_{22}U_2\right) = \sigma l \left(K^{-1}_{21} + K^{-1}_{22} \right)	U \Rightarrow \frac{I_2}{I} = \frac{K^{-1}_{21} + K^{-1}_{22}} {\sum\limits_{i,j=1}^{2} K^{-1}_{ij}}
 		\end{align*}
 
 
 
 	\subsection{e)}
-
 		\par
-		O ensaio é realizado a $\SI{1}{\kilo\hertz}$
+		O ensaio é realizado a $\SI{1}{\kilo\hertz}$ para evitar a eletrólise da água. Alternar o cátodo e ânodo sucessivamente, a uma frequência mais alta que a velocidade de reação da eletrólise, chegará para evitar a eletrólise e assim um aumento da temperatura da água, que influenciaria o valor da sua condutividade $\sigma$.
 
 \end{document}
