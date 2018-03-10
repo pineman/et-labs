@@ -153,11 +153,24 @@
 	Esta pode ser escrita na forma matricial
 	
 	\begin{align*}
-		[R] = \frac{1}{2\pi\sigma l} [K], [K] = \ln\left(\frac{r'_{ij} }{r_{ij} }\right) 
+		[R] = \frac{1}{\sigma l} [K], [K] = \frac{1}{2 \pi} \ln\left(\frac{r'_{ij} }{r_{ij} }\right) 
 	\end{align*}
 	
 	onde $[K]$ depende apenas raio dos condutores cilíndricos e das distâncias destes entre si e ao plano condutor. Assim, com os dados fornecidos relativamente à posição relativa dos condutores, obtém-se a matriz $[K]$:
 
+	\begin{align*}
+		\begin{split}
+		[K] &= \frac{1}{2\pi}
+		\begin{bmatrix}
+			\ln\left(\frac{2h_1}{r_0}\right) & \ln\left(\frac{2h_1 + d}{d}\right)  \\
+			\ln\left(\frac{2h_1 + d}{d}\right) & \ln\left(\frac{2h_1 + d}{r_0}\right)  
+		\end{bmatrix} = \\
+		&= \begin{bmatrix}
+			0.547105466061146 & 0.239381352489734 \\
+			0.239381352489734 & 0.619041132708855 \\
+		\end{bmatrix}
+		\end{split}
+		\end{align*}
 	
 	\subsection{c)}
 
