@@ -1,11 +1,19 @@
 % !TEX encoding = UTF-8 Unicode
-\documentclass[portuguese, a4paper]{article}
-\usepackage[margin=2.5cm]{geometry}
+\documentclass[11pt, a4paper, titlepage, portuguese]{article}
+\usepackage[]{geometry}
+	\geometry{
+		a4paper,
+		includehead,
+		includefoot,
+		top=1.7cm,
+		bottom=1.7cm,
+		left=2.5cm,
+		right=2.5cm
+	}
 %\usepackage{fontspec} % XeLaTeX
 \usepackage[T1]{fontenc} % LaTeX
 \usepackage[utf8]{inputenc} % LaTeX
 %\usepackage{newtxmath, newtxtext}
-%\usepackage{lmodern}
 \usepackage{csquotes}
 \usepackage{babel}
 %\usepackage[backend=bibtex]{biblatex}
@@ -45,27 +53,27 @@
 \fancyhf{}
 \lhead{Electrotecnia Teórica}
 \rhead{1º Laboratório}
-\lfoot{\small Engenharia Eletrotécnica e de Computadores - IST}
+\lfoot{IST - Engenharia Eletrotécnica e de Computadores}
 \rfoot{Página \thepage}
+\renewcommand{\headrulewidth}{1pt}
 \renewcommand{\footrulewidth}{0.5pt}
 
 % Document
 \begin{document}
-	\hypersetup{pageanchor=false}
 	\begin{titlepage}
 		\center
-		\textsc{\bfseries\LARGE Instituto Superior Técnico}\\[1cm] % Name of your university/college
-		\includegraphics[height=1.5cm]{IST_Logo.pdf}\\[2.5cm]
+		\textsc{\bfseries\huge Instituto Superior Técnico}\\[1cm] % Name of your university/college
+		\includegraphics[height=2cm]{IST_Logo.pdf}\\[2.5cm]
 
-		\textsc{\large Engenharia Eletrotécnica e de Computadores}\\[0.5cm] % Major heading such as course name
-		\textsc{\Large Eletrotecnia Teórica}\\[0.5cm] % Minor heading such as course title
-		\textsc{\large 2017/2018 2º Semestre}\\[2cm]
+		\textsc{\Large Engenharia Eletrotécnica e de Computadores}\\[0.5cm] % Major heading such as course name
+		\textsc{\bfseries{\LARGE Eletrotecnia Teórica}}\\[0.5cm] % Minor heading such as course title
+		\textsc{\Large 2017/2018 2º Semestre}\\[1.5cm]
 
 		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
 		\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
 			\textsc{\Huge \bfseries 1º Trabalho Laboratorial}\\[0.2cm]
 			\bigskip
-			\textsc{\large \bfseries Determinação Experimental Da Matriz De Coeficientes De Capacidade De Um Sistema De N+1 Condutores \\
+			\textsc{\Large \bfseries Determinação Experimental Da Matriz De Coeficientes De Capacidade De Um Sistema De N+1 Condutores \\
 			(Via Analogia Reo-eléctrica)}\\[0.2cm]
 		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
 		\rule{\textwidth}{1.6pt}\\[5cm]
@@ -84,8 +92,9 @@
 
 		\large \bfseries Laboratório segunda-feira, 09h30-11h30, Grupo D\\
 		\large 12 de março de 2018\\[1cm]
+		\setcounter{page}{0}
 	\end{titlepage}
-	\hypersetup{pageanchor=true}
+	%\tableofcontents
 
 	\section{Dimensionamento}
 	\subsection{a)}
@@ -241,6 +250,6 @@
 
 	\subsection{e)}
 		\par
-		O ensaio é realizado a $\SI{1}{\kilo\hertz}$ para evitar a eletrólise da água. Alternar os pápeis do cátodo e ânodo sucessivamente, a uma frequência mais alta que a velocidade de reação da eletrólise, chegará para evitar a eletrólise e assim um aumento da temperatura da água, que influenciaria o valor da sua condutividade $\sigma$.
+		O ensaio é realizado a $\SI{1}{\kilo\hertz}$ para evitar a eletrólise da água. Alternar os eletrodos do cátodo e ânodo sucessivamente, a uma frequência mais alta que a velocidade de reação da eletrólise, chegará para esta não ocorrer e assim evitar um aumento na temperatura da água, o que influenciaria o valor da sua condutividade $\sigma$.
 
 \end{document}
