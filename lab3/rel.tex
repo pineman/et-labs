@@ -1,0 +1,107 @@
+\documentclass[a4paper, titlepage, portuguese]{article}
+\usepackage[margin=2.5cm]{geometry}
+%\usepackage{fontspec} % XeLaTeX
+\usepackage[T1]{fontenc} % LaTeX
+\usepackage[utf8]{inputenc} % LaTeX
+%\usepackage{newtxmath, newtxtext}
+\usepackage{csquotes}
+\usepackage{babel}
+%\usepackage[backend=bibtex]{biblatex}
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{bibliography.bib}
+
+\usepackage{indentfirst}
+\usepackage{graphicx}
+	\graphicspath{{images/}}
+\usepackage{grffile}
+\usepackage{float}
+\usepackage{amsmath}
+	\allowdisplaybreaks
+\usepackage{physics}
+\usepackage{siunitx}
+	\sisetup{inter-unit-product =\ensuremath{.}}
+\usepackage{hyperref}
+
+% Section styles
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+
+% Useful commands
+\newcommand{\eq}{\Leftrightarrow} % Equivalente
+% Ordem de grandeza, e.g., "2\og{5}" => "2e5"
+\newcommand{\og}[1]{{\times \num{e#1}}}
+% Para numerar apenas uma equação
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Electrotecnia Teórica}
+\rhead{3º Laboratório}
+\lfoot{IST - MEEC}
+\rfoot{Página \thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Document
+\begin{document}
+	\begin{titlepage}
+		\center
+		\textsc{\bfseries\LARGE Instituto Superior Técnico}\\[1cm] % Name of your university/college
+		\includegraphics[height=1.5cm]{IST_Logo.pdf}\\[2.5cm]
+
+		\textsc{\large Engenharia Eletrotécnica e de Computadores}\\[0.5cm] % Major heading such as course name
+		\textsc{\Large Eletrotecnia Teórica}\\[0.5cm] % Minor heading such as course title
+		\textsc{\large 2017/2018 2º Semestre}\\[2cm]
+
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
+		\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
+			\textsc{\Huge \bfseries 3º Trabalho Laboratorial}\\[0.2cm]
+			\bigskip
+			\textsc{\large \bfseries circuito RLC série em regime forçado alternado sinusoidal}\\[0.2cm]
+		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
+		\rule{\textwidth}{1.6pt}\\[7cm]
+
+		\begin{minipage}{0.9\textwidth}
+			\begin{flushleft} \large
+				\begin{Large}\bfseries\textsc{Autores:}\end{Large}\\[0.4cm]
+				\begin{tabular}{l l l}
+					Ricardo Simões			& 70389 & \normalsize ricardo.f.d.simoes@ist.utl.pt \\
+					Rita Ramos					& 81616 & \normalsize rita.ramos@tecnico.ulisboa.pt \\
+					João Pinheiro				& 84086 & \normalsize joao.castro.pinheiro@tecnico.ulisboa.pt \\
+					João Sebastião			& 84087 & \normalsize joaofpsebastiao@tecnico.ulisboa.pt \\
+				\end{tabular}
+			\end{flushleft}
+		\end{minipage}\\[0.5cm]
+
+		\large \bfseries Laboratório segunda-feira, 09h30-11h30, Grupo D\\
+		\large 16 de abril de 2018\\[1cm]
+		\setcounter{page}{0}
+	\end{titlepage}
+	%\tableofcontents
+
+	\section{3. Dimensionamento}
+	\subsection{3.1}
+    $$ \bar{Z} = \bar{Z}_{R_S} + (\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d} $$
+    \subsection{3.2}
+    \subsubsection{a)}
+    \subsubsection{b)}
+    	\par
+      Obtido no Matlab.
+    \subsubsection{c)}
+    \subsubsection{d)}
+
+	%\begin{figure}[h]
+	%	\centering
+	%	\includegraphics[width=0.6\linewidth]{figure.pdf}
+	%	\caption{An example figure}
+	%	\label{fig:figure-example}
+	%\end{figure}
+
+	%Ver \autoref{fig:figure-example}
+
+	%\printbibliography
+\end{document}
+
