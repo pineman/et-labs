@@ -114,13 +114,13 @@
 			&= R_S + \dfrac{1}{\mathrm{j} \omega C} + -\mathrm{j}\dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} \\
 			&= \underbrace{R_S}_{=\Re{\bar{Z}}} + -\mathrm{j}\underbrace{\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right)}_{=\Im{\bar{Z}}}, \hspace{2pt}\omega \neq 0. \numberthis \\
 		\end{align*}
-		
+
 		\par
 		Na situação de ressonância do circuito, a corrente é máxima e encontra-se em fase com a tensão do gerador. Para que tal aconteça, é necessário que a impedância seja mínima e que
 		\begin{equation}
 			\Im{\bar{Z}} = \left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right) = 0, \hspace{2pt}\omega \neq 0.
 		\end{equation}
-		
+
 		\newpage
 		Assim, tem-se
 		\begin{align*}
@@ -151,24 +151,24 @@
 			\bar{U}_G = \bar{U}_R + \bar{U}_L + \bar{U}_C = R\bar{I} + \mathrm{j} \omega L - \dfrac{\mathrm{j}}{\omega C}\bar{I} \numberthis \\
 			\eq \dfrac{\bar{U}_G}{\bar{I}} = \bar{Z} = R + \mathrm{j}\left(\omega L - \dfrac{1}{\omega C}\right), \numberthis
 		\end{gather*}
-	
-		onde 
-		
+
+		onde
+
 		\begin{align}
 			Z &= \sqrt{R^2 + \left(\omega L - \dfrac{1}{\omega C}\right)^2} \\
 			\alpha_Z &= \arctan{\left(\dfrac{\omega L - \dfrac{1}{\omega C}}{R}\right)}
-		\end{align}		
-	
+		\end{align}
+
 	\newpage
 	\subsubsection{}
 		\par
 		Na situação de ressonância do circuito, $u_G$ e $i$ estão em fase.  Portanto, tal como visto anteriormente, a impedância é puramente resistiva, tendo então
 		\begin{gather*}
 			\Im{\bar{Z}} = \omega_0 L - \dfrac{1}{\omega_0 C} = 0 \\
-			\eq \omega_0 L = \dfrac{1}{\omega_0 C} \numberthis \label{eq:ressonância}
+			\eq \omega_0 L = \dfrac{1}{\omega_0 C}
 		\end{gather*}
 		\par
-		Da figura \ref{eq:ressonância}, é possível obter o valor da capacidade $C$, dado por
+		De onde é possível obter o valor da capacidade $C$, dado por
 		\begin{gather*}
 			C = \dfrac{1}{\omega_0^2 L} = \dfrac{1}{\left(2\pi \times \num{40e3}\right)^2 \times \num{2e-3}} \approx \SI{7.916}{\nano\farad}
 		\end{gather*}
@@ -176,7 +176,7 @@
 	\subsubsection{}
 		\par
 		A expressão da corrente normalizada $I_n$ em função da frequência normalizada $f_n$ é dada por
-		
+
 		\begin{align}
 			\label{In(fn)}
 			I _ { n } \left( f _ { n } \right) = \frac { 1} { \sqrt { 1+ Q _ { 0} ^ { 2} \left( f _ { n } - 1/ f _ { n } \right) ^ { 2} } }
@@ -184,24 +184,24 @@
 
 		onde $ f _ { n } = f / f _ { 0} \hspace{4pt}\text{e}\hspace{4pt}  Q _ { 0} = \left( \omega _ { 0} L / R _ { S } \right)$.
 		Para $R_S = 250\hspace{4pt}\Omega$ e para $R_S = 500\hspace{4pt}\Omega$, substituindo em \ref{In(fn)}, tem-se
-		
+
 		\begin{align}
 			\label{In_250}
 			I _ { n } \left( f _ { n } \right) = \frac {1} {  \sqrt { 1+ \left(\frac{2\pi \times \num{40e3} \times \num{2e-3}}{250} \right)^{2}  \left( f _ { n } - 1/ f _ { n } \right) ^ { 2} }}
 		\end{align}
-		
+
 		\begin{align}
 			\label{In_500}
 			I _ { n } \left( f _ { n } \right) = \frac {1} {  \sqrt { 1+ \left(\frac{2\pi \times \num{40e3} \times \num{2e-3}}{500} \right)^{2}   \left( f _ { n } - 1/ f _ { n } \right) ^ { 2} }}, \\
 		\end{align}
 
-	respetivamente. As duas curvas correspondentes a (\ref{In_250}) e (\ref{In_500}) foram obtidas recorrendo ao Matlab e estão representadas em anexo na secção R 3.2 b). 
-	
+	respetivamente. As duas curvas correspondentes a (\ref{In_250}) e (\ref{In_500}) foram obtidas recorrendo ao Matlab e estão representadas em anexo na secção R 3.2 b).
+
 
 	\subsubsection{}
-	
+
 		Recorrendo a (8), obtém-se as expressões da corrente $i$ e das tensões no condensador, na bobina e na resistência, $u_C$, $u_L$, e $u_R$ respetivamente, dadas por
-		
+
 		\begin{align*}
 			\bar{U}_G = \bar{Z} \bar{I} \eq \bar{I} = \dfrac{\bar{U}_G}{\bar{Z}} & \eq I_{ef} \mathrm{e}^{\mathrm{j} \alpha_I} = \dfrac{U_{G_{ef}}}{Z} \mathrm{e}^{\mathrm{j}\left(\alpha_{U_G} - \alpha_{Z}\right)}\\
 			\bar{U}_C = -\mathrm{j} \dfrac{1}{\omega C} \bar{I} &\eq U_{C_{ef}} \mathrm{e}^{\mathrm{j} \alpha_{U_C}}= \dfrac{1}{\omega C}I_{ef} \mathrm{e}^{\mathrm{j} \left(-\frac{\pi}{2}+\alpha_I\right)} \\
@@ -210,7 +210,7 @@
 		\end{align*}
 
 		Considerando os seguintes dados
-	
+
 		\begin{align*}
 			&R _ { s } = 250\hspace{4pt}\Omega \\
 			&U_{G_{ef}} = 1\hspace{2pt}V\\
@@ -219,12 +219,12 @@
 		\end{align*}
 
 		 obtém-se, para as frequências $f = f_0 = \SI{40}{\kilo\hertz}$, $f_1 = 0.95f_0= \SI{38}{\kilo\hertz}$ $f_2 = 1.05f_0 = \SI{42}{\kilo\hertz}$, os valores eficazes e desfasagens corrente e das tensões no condensador, na bobina e na resistência, apresentados em anexo na tabela da secção R 3.2 c).
-	
+
 	\newpage
 	\subsubsection{}
-	
+
 		Na figura \ref{fig:diag_vect}, estão representados os diagramas vetoriais de tensão para cada uma das frequência da alínea anterior.
-	
+
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.6\linewidth]{diag_vect.jpeg}

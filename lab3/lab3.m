@@ -15,10 +15,12 @@ function y = In (fn, Rs, w0, L)
   y = 1./sqrt(1 + Q0(Rs, w0, L)^2 * (fn - 1./fn).^2);
 end
 
-figure("Name", "1");
+figure;
 plot(fn, In(fn, Rs1, w0, L));
-figure("Name", "2");
+title('Rs = 250 \Omega', 'interpreter', 'tex');
+figure;
 plot(fn, In(fn, Rs2, w0, L));
+title('Rs = 500 \Omega', 'interpreter', 'tex');
 
 C = 1/(w0^2 * L);
 
@@ -62,21 +64,24 @@ function y = alfaUr(Rs, w, L, C)
 	y = alfaI(Rs, w, L, C);
 endfunction	
 
-for w = 2*pi*[f0 0.95*f0 1.05*f0]
-	f = w/(2*pi)
-	printf("Ief = %g ∠ %g\n", Ief(Rs1, w, L, C), rad2deg(alfaI(Rs1, w, L, C)));
-	printf("Ucef = %g ∠ %g\n", Ucef(Rs1, w, L, C), rad2deg(alfaUc(Rs1, w, L, C)));
-	printf("Ulef = %g ∠ %g\n", Ulef(Rs1, w, L, C), rad2deg(alfaUl(Rs1, w, L, C)));
-	printf("Uref = %g ∠ %g\n", Uref(Rs1, w, L, C), rad2deg(alfaUr(Rs1, w, L, C)));
+for f = [f0 0.95*f0 1.05*f0]
+	f	
+	w = 2*pi*f;
+	printf("Ief = %f ∠ %f\n", Ief(Rs1, w, L, C), rad2deg(alfaI(Rs1, w, L, C)));
+	printf("Ucef = %f ∠ %f\n", Ucef(Rs1, w, L, C), rad2deg(alfaUc(Rs1, w, L, C)));
+	printf("Ulef = %f ∠ %f\n", Ulef(Rs1, w, L, C), rad2deg(alfaUl(Rs1, w, L, C)));
+	printf("Uref = %f ∠ %f\n", Uref(Rs1, w, L, C), rad2deg(alfaUr(Rs1, w, L, C)));
 	disp('');
 endfor
 %}
 %% Experimental
-% 5.1
+% 5.1/6.1
+disp('5.1');
 f = [ 1; 2; 3; ];
 Cexp = [ 5; 6; 7; ];
 x = Cexp;
 y = 1./(f.^2);
+figure;
 plot(x, y, 'rx');
 hold on;
 
@@ -94,7 +99,24 @@ X = [ones(n, 1) x];
 % https://octave.org/doc/v4.2.2/Linear-Least-Squares.html
 R = ols(y, X);
 plot(x, X*R);
-m = R(2);
-b = R(1);
+m = R(2)
+b = R(1)
 L = m/(4*pi^2)
 Cd = b/(4*pi^2*L)
+
+% 5.2 a) / 6.2
+disp('5.2 a)');
+Cexp = ;
+%fexp = [f0 0.95*f0 1.05*f0];
+fexp = [ ];
+delta_t = [ ];
+for f = fexp
+	f
+	w = 2*pi*f;
+	%alfaI = w * delta_t
+	printf("Ief = %f ∠ %f\n", Ief(Rs1, w, L, C), rad2deg(alfaI(Rs1, w, L, C)));
+	disp('');
+endfor
+
+% 5.2 b) / 6.3
+
