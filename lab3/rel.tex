@@ -83,8 +83,19 @@
 
 	\section{3. Dimensionamento}
 	\subsection{3.1}
+	
+		
+	
+		\begin{equation}
+			\bar{Z} = \bar{Z}_{R_S} + \bar{Z}_{eq} + \bar{Z}_C,
+		\end{equation}
+		
+		onde
+		
 		\begin{gather*}
-			\bar{Z} = \bar{Z}_{R_S} + \underbrace{(\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d}}_{= \bar{Z}_{eq}} + \bar{Z}_C \\
+			%my part
+			\bar{Z}_{eq} = (\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d} = \dfrac{\left(R_L + \mathrm{j} \omega L\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{(R_L + \mathrm{j} \omega L) + \dfrac{1}{\mathrm{j} \omega C_d}} \\
+			%my part
 			\bar{Z}_{eq} = \dfrac{1}{\dfrac{1}{R_L + \mathrm{j} \omega L} + \mathrm{j} \omega C_d} =
 			\dfrac{1}{\dfrac{1 + (R_L + \mathrm{j} \omega L)(\mathrm{j} \omega C_d)}{R_L + \mathrm{j} \omega L}} =
 			\dfrac{R_L + \mathrm{j} \omega L}{1 + (R_L + \mathrm{j} \omega L)(\mathrm{j} \omega C_d)} \\
@@ -95,6 +106,7 @@
 			= R_S + \dfrac{1}{\mathrm{j} \omega C} + -\mathrm{j}\dfrac{1}{\omega C_d - \omega L} \\
 			= R_S + -\mathrm{j}\underbrace{\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \omega L}\right)}_{= 0}
 		\end{gather*}
+		
 	\subsection{3.2}
 		\par
 		A equação do circuito no domínio do tempo são:
