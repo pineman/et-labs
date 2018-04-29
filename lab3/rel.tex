@@ -66,7 +66,7 @@
 			\bigskip
 			\textsc{\large \bfseries Circuito RLC série em regime forçado alternado sinusoidal}\\[0.2cm]
 		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
-		\rule{\textwidth}{1.6pt}\\[5cm]
+		\rule{\textwidth}{1.6pt}\\[6cm]
 
 		\begin{minipage}{0.9\textwidth}
 			\begin{flushleft} \large
@@ -96,7 +96,7 @@
 			\label{fig:circuito2}
 		\end{figure}
 		\par
-		Pela análise do circuito da \autoref{fig:circuito2}, a expressão da impedância é dada por
+		Pela análise do circuito da figura \ref{fig:circuito2}, a expressão da impedância é dada por
 		\begin{equation}
 			\bar{Z} = \bar{Z}_{R_S} + \bar{Z}_{\parallel} + \bar{Z}_C,
 		\end{equation}
@@ -112,7 +112,7 @@
 			&= R_S + \dfrac{1}{\mathrm{j} \omega C} + \dfrac{\left(\dfrac{R_L}{\omega L} + \mathrm{j}\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{\dfrac{R_L}{\omega L} + \mathrm{j} + \dfrac{1}{\mathrm{j} \omega^2 C_d L}} \nonumber \\
 			&\approx R_S + \dfrac{1}{\mathrm{j} \omega C} + \dfrac{\dfrac{1}{\omega C_d}}{\mathrm{j} + \dfrac{1}{\mathrm{j} \omega^2 C_d L}} \nonumber \\
 			&= R_S + \dfrac{1}{\mathrm{j} \omega C} + -\mathrm{j}\dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} \nonumber \\
-			&= R_S + -\mathrm{j}\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right)
+			&= R_S + -\mathrm{j}\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right) \\
 		\end{align}
 		\par
 		Na situação de ressonância do circuito, a corrente é máxima e encontra-se em fase com a tensão do gerador. Para que tal aconteça, é necessário que a impedância seja mínima e que
@@ -122,7 +122,7 @@
 		\par
 		Assim, tem-se
 		\begin{align*}
-			&\Leftrightarrow \dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} = 0 \\
+			&\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} = 0 \\
 			&\Leftrightarrow \dfrac{1}{\omega C} = - \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} \\
 			&\Leftrightarrow \omega C_d - \dfrac{1}{\omega L} = -\omega C \\
 			&\Leftrightarrow \omega^2 C_d - \dfrac{1}{L} = -\omega^2 C \\
@@ -139,14 +139,14 @@
 			\label{fig:circuito1}
 		\end{figure}
 		\par
-		Pela aplicação da lei de indução no circuito da figura \autoref{fig:circuito1}, no domínio do tempo obtém-se
+		Pela aplicação da lei de indução no circuito da figura \ref{fig:circuito1}, no domínio do tempo obtém-se
 		\begin{equation*}
 			u_G = u_R + u_L + u_C = Ri + L\dv{i}{t} + \dfrac{1}{C} \int{i\dd{t}}. \numberthis
 		\end{equation*}
 		\par
 		Em amplitudes complexas, tem-se
 		\begin{gather*}
-			\bar{U}_G = \bar{U}_R + \bar{U}_L + \bar{U}_C = R\bar{I} + \mathrm{j} \omega L - \dfrac{\mathrm{j}}{\omega C}\bar{I} \eq \\
+			\bar{U}_G = \bar{U}_R + \bar{U}_L + \bar{U}_C = R\bar{I} + \mathrm{j} \omega L - \dfrac{\mathrm{j}}{\omega C}\bar{I} \numberthis \\
 			\eq \dfrac{\bar{U}_G}{\bar{I}} = \bar{Z} = R + \mathrm{j}\left(\omega L - \dfrac{1}{\omega C}\right) \numberthis \\
 			Z = \sqrt{R^2 + \left(\omega L - \dfrac{1}{\omega C}\right)^2} \\
 			\alpha_Z = \arctan{\left(\dfrac{\omega L - \dfrac{1}{\omega C}}{R}\right)}
@@ -160,29 +160,65 @@
 			\eq \omega_0 L = \dfrac{1}{\omega_0 C} \numberthis \label{eq:ressonância}
 		\end{gather*}
 		\par
-		Da \autoref{eq:ressonância}, é possível obter o valor da capacidade $C$, dado por
+		Da figura \ref{eq:ressonância}, é possível obter o valor da capacidade $C$, dado por
 		\begin{gather*}
 			C = \dfrac{1}{\omega_0^2 L} = \dfrac{1}{\left(2\pi \times \num{40e3}\right)^2 \times \num{2e-3}} \approx \SI{7.916}{\nano\farad}
 		\end{gather*}
 
 	\subsubsection{}
 		\par
-		Obtido no Matlab.
+		A expressão da corrente normalizada $I_n$ em função da frequência normalizada $f_n$ é dada por
+		
+		\begin{align}
+			I _ { n } \left( f _ { n } \right) = \frac { 1} { \sqrt { 1+ Q _ { 0} ^ { 2} \left( f _ { n } - 1/ f _ { n } \right) ^ { 2} } }
+		\end{align}
+
+		onde $ f _ { n } = f / f _ { 0} \hspace{4pt}\text{e}\hspace{4pt}  Q _ { 0} = \left( \omega _ { 0} L / R _ { S } \right)$.
+		Para $R_S = 250\hspace{4pt}\Omega$ e para $R_S = 500\hspace{4pt}\Omega$ obtém-se, respetivamente
+		
+		\begin{align}
+			I _ { n } \left( f _ { n } \right) = \frac {1} {  \sqrt { 1+ \left(\frac{2\pi \times \num{40e3} \times \num{2e-3}}{250} \right)^{2}  \left( f _ { n } - 1/ f _ { n } \right) ^ { 2} }}
+		\end{align}
+		
+		\begin{align}
+			I _ { n } \left( f _ { n } \right) = \frac {1} {  \sqrt { 1+ \left(\frac{2\pi \times \num{40e3} \times \num{2e-3}}{500} \right)^{2}   \left( f _ { n } - 1/ f _ { n } \right) ^ { 2} }}.
+		\end{align}
+
+	As duas curvas da corrente normalizada foram obtidas recorrendo ao Matlab e estão representadas em anexo na secção R 3.2 b). \\ 
+	
 
 	\subsubsection{}
+	
+		Recorrendo a (8), obtém-se as expressões da corrente $i$ e das tensões no condensador, na bobina e na resistência, $u_C$, $u_L$, e $u_R$ respetivamente, dadas por
+		
 		\begin{align*}
-			&\bar{U}_G = \bar{Z} \bar{I} \eq \bar{I} = \dfrac{U_{ef}}{Z} \mathrm{e}^{\mathrm{j}\left(\alpha_{U_G} - \alpha_{Z}\right)} = I_{ef} \mathrm{e}^{\mathrm{j} \alpha_I} \\
-			&\bar{U}_C = \dfrac{1}{\mathrm{j}\omega C} \bar{I} = -\mathrm{j} \dfrac{1}{\omega C} \bar{I} = \dfrac{1}{\omega C}I_{ef} \mathrm{e}^{\mathrm{j} \left(-\frac{\pi}{2}+\alpha_I\right)} = U_{C_{ef}} \mathrm{e}^{\mathrm{j} \alpha_{U_C}} \\
-			&\bar{U}_L = \mathrm{j}\omega L \bar{I} = \omega LI_{ef} \mathrm{e}^{\mathrm{j} \left(\frac{\pi}{2}+\alpha_I\right)} = U_{L_{ef}} \mathrm{e}^{\mathrm{j} \alpha_{U_L}} \\
-			&\bar{U}_R = R \bar{I} = R I_{ef} \mathrm{e}^{\mathrm{j} \alpha_I}
+			\bar{U}_G = \bar{Z} \bar{I} \eq \bar{I} = \dfrac{\bar{U}_G}{\bar{Z}} & \eq I_{ef} \mathrm{e}^{\mathrm{j} \alpha_I} = \dfrac{U_{G_{ef}}}{Z} \mathrm{e}^{\mathrm{j}\left(\alpha_{U_G} - \alpha_{Z}\right)}\\
+			\bar{U}_C = -\mathrm{j} \dfrac{1}{\omega C} \bar{I} &\eq U_{C_{ef}} \mathrm{e}^{\mathrm{j} \alpha_{U_C}}= \dfrac{1}{\omega C}I_{ef} \mathrm{e}^{\mathrm{j} \left(-\frac{\pi}{2}+\alpha_I\right)} \\
+			\bar{U}_L = \mathrm{j}\omega L \bar{I} &\eq U_{L_{ef}} \mathrm{e}^{\mathrm{j} \alpha_{U_C}}=\omega LI_{ef} \mathrm{e}^{\mathrm{j} \left(\frac{\pi}{2}+\alpha_I\right)}  \\
+			\bar{U}_R = R \bar{I} &\eq {U}_{R_{ef}}\mathrm{e}^{\mathrm{j} \alpha_R}= R I_{ef} \mathrm{e}^{\mathrm{j} \alpha_I}.
 		\end{align*}
 
+		Considerando os seguintes dados
+	
+		\begin{align*}
+			&R _ { s } = 250\hspace{4pt}\Omega \\
+			&U_{G_{ef}} = 1\hspace{2pt}V\\
+			&C \approx \SI{7.916}{\nano\farad}\\
+			&L = \SI{2}{\milli\farad}, 
+		\end{align*}
+
+		 obtém-se, para as frequências $f = f_0 = \SI{40}{\kilo\hertz}$, $f_1 = 0.95f_0= \SI{38}{\kilo\hertz}$ $f_2 = 1.05f_0 = \SI{42}{\kilo\hertz}$, os valores eficazes e desfasagens corrente e das tensões no condensador, na bobina e na resistência, apresentados em anexo na tabela da secção R 3.2 c).
+	
+	\newpage
 	\subsubsection{}
+	
+		Na figura \ref{fig:diag_vect}, estão representados os diagramas vetoriais de tensão para cada uma das frequência da alínea anterior.
+	
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.6\linewidth]{diag_vect.jpeg}
-			\caption{Diagrama vetorial das tensões do circuito RLC para $f = f_0$, $f = 0.95f_0$ e $f = 1.05f_0$, respetivamente.}
-			\label{fig:figure-example}
+			\caption{Diagrama vetorial das tensões do circuito RLC para $f=f_0$, $f_1=0.95f_0$ e $f_2=1.05f_0$, respetivamente.}
+			\label{fig:diag_vect}
 		\end{figure}
 
 	%Ver \autoref{fig:figure-example}
