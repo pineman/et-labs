@@ -1,3 +1,5 @@
+%% Dimensionamento
+%{
 f0 = 40e3;
 w0 = 2*pi*f0;
 L = 2e-3;
@@ -5,18 +7,18 @@ Rs1 = 250;
 Rs2 = 500;
 fn = 10e3/f0 : 0.01 : 90e3/f0;
 
-%function y = Q0 (Rs, w0, L)
-%  y = w0 * L / Rs;
-%end
-%
-%function y = In (fn, Rs, w0, L)
-%  y = 1./sqrt(1 + Q0(Rs, w0, L)^2 * (fn - 1./fn).^2);
-%end
-%
-%figure("Name", "1");
-%plot(fn, In(fn, Rs1, w0, L));
-%figure("Name", "2");
-%plot(fn, In(fn, Rs2, w0, L));
+function y = Q0 (Rs, w0, L)
+  y = w0 * L / Rs;
+end
+
+function y = In (fn, Rs, w0, L)
+  y = 1./sqrt(1 + Q0(Rs, w0, L)^2 * (fn - 1./fn).^2);
+end
+
+figure("Name", "1");
+plot(fn, In(fn, Rs1, w0, L));
+figure("Name", "2");
+plot(fn, In(fn, Rs2, w0, L));
 
 C = 1/(w0^2 * L);
 
@@ -68,3 +70,31 @@ for w = 2*pi*[f0 0.95*f0 1.05*f0]
 	printf("Uref = %g ∠ %g\n", Uref(Rs1, w, L, C), rad2deg(alfaUr(Rs1, w, L, C)));
 	disp('');
 endfor
+%}
+%% Experimental
+% 5.1
+f = [ 1; 2; 3; ];
+Cexp = [ 5; 6; 7; ];
+x = Cexp;
+y = 1./(f.^2);
+plot(x, y, 'rx');
+hold on;
+
+% Number of sample points
+n = length(x);
+% https://en.wikipedia.org/wiki/Ordinary_least_squares#Simple_regression_model
+%m = (n*sum(x.*y) - (sum(x)*sum(y)))/(n*sum(x.^2) - sum(x)^2)
+%b = (1/n)*sum(y) - m*(1/n)*sum(x)
+
+% Add a column of all ones (intercept term) to x
+X = [ones(n, 1) x];
+% Calculate the normal equation of OLS https://en.wikipedia.org/wiki/Ordinary_least_squares
+% http://www.lauradhamilton.com/tutorial-linear-regression-with-octave
+%R = (pinv(X'*X))*X'*y
+% https://octave.org/doc/v4.2.2/Linear-Least-Squares.html
+R = ols(y, X);
+plot(x, X*R);
+m = R(2);
+b = R(1);
+L = m/(4*pi^2)
+Cd = b/(4*pi^2*L)
