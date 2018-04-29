@@ -146,18 +146,21 @@
 			\label{circuito2}
 		\end{figure}
 	
+		\justify
 		Pela análise do circuito da figura \ref{circuito2}, a expressão da impedância é dada por
 		
-		\begin{equation}
-			\bar{Z} = \bar{Z}_{R_S} + \bar{Z}_{\parallel} + \bar{Z}_C,
-		\end{equation}
+		\begin{equation*}
+			\bar{Z} = \bar{Z}_{R_S} + \bar{Z}_{\parallel} + \bar{Z}_C, \numberthis
+		\end{equation*}
 		
+		\justify
 		onde
 		
-		\begin{equation}
-			\bar{Z}_{\parallel} = (\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d} = \dfrac{\left(R_L + \mathrm{j} \omega L\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{(R_L + \mathrm{j} \omega L) + \dfrac{1}{\mathrm{j} \omega C_d}}.
-		\end{equation}
+		\begin{equation*}
+			\bar{Z}_{\parallel} = (\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d} = \dfrac{\left(R_L + \mathrm{j} \omega L\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{(R_L + \mathrm{j} \omega L) + \dfrac{1}{\mathrm{j} \omega C_d}}. \numberthis
+		\end{equation*}
 		
+		\justify
 		Supondo que $R_L \ll \omega L$, tem-se
 		
 		\begin{align}
@@ -167,44 +170,63 @@
 			&= R_S + \dfrac{1}{\mathrm{j} \omega C} + -\mathrm{j}\dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} \nonumber \\
 			&= R_S + -\mathrm{j}\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right)
 		\end{align}
-
-		Na situação de ressonância do circuito, a corrente é máxima, uma vez que a impedância do circuito é mí­nima, e encontra-se em fase com a tensão do gerador. Para que tal aconteça,  é necessário que 
+		
+		\newpage
+		\justify
+		Na situação de ressonância do circuito, a corrente é máxima e encontra-se em fase com a tensão do gerador. Para que tal aconteça, é necessário que a impedância seja mínima e que
 		\begin{equation}
 			Im(\bar{Z}) = \left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right) = 0.
 		\end{equation}
 		
 		Assim, tem-se
-		\begin{align}
-			&\Leftrightarrow \dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} = 0 \nonumber \\
-			&\Leftrightarrow \dfrac{1}{\omega C} = - \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} \nonumber \\
-			&\Leftrightarrow \omega C_d - \dfrac{1}{\omega L} = -\omega C \nonumber \\
-			&\Leftrightarrow \omega^2 C_d - \dfrac{1}{L} = -\omega^2 C \nonumber \\
-			&\Leftrightarrow \omega^2 \left(C + C_d \right) = \dfrac{1}{L} \nonumber \\
-			&\Leftrightarrow \omega^2 = \dfrac{1}{L\left(C + C_d \right)} \nonumber \\
-			&\Leftrightarrow \dfrac{1}{\omega^2} = L\left(C + C_d \right), \omega \neq 0.
-		\end{align}
+		\begin{align*}
+			&\Leftrightarrow \dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} = 0 \\
+			&\Leftrightarrow \dfrac{1}{\omega C} = - \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} \\
+			&\Leftrightarrow \omega C_d - \dfrac{1}{\omega L} = -\omega C \\
+			&\Leftrightarrow \omega^2 C_d - \dfrac{1}{L} = -\omega^2 C \\
+			&\Leftrightarrow \omega^2 \left(C + C_d \right) = \dfrac{1}{L} \\
+			&\Leftrightarrow \omega^2 = \dfrac{1}{L\left(C + C_d \right)} \\
+			&\Leftrightarrow \dfrac{1}{\omega^2} = L\left(C + C_d \right), \omega \neq 0. \numberthis
+		\end{align*}
 		
 	\subsection{1.2}
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{circuito1.png}
+			\caption{Circuito RLC série, $f_0 = 40 \si{\kilo\hertz}, L = 2,0 \si{\milli\henry}$ }
+			\label{circuito1}
+		\end{figure}
+	
 		\par
 		\justify
-		A equação do circuito no domí­nio do tempo são:
-		\begin{gather*}
-			u_G = u_R + u_L + u_C = Ri + L\dv{i}{t} + \dfrac{1}{C} \int{i\dd{t}}
-		\end{gather*}
+		Pela aplicação de KVL no circuito da figura \ref{circuito1} no domí­nio do tempo, obtém-se
+		\begin{equation*}
+			u_G = u_R + u_L + u_C = Ri + L\dv{i}{t} + \dfrac{1}{C} \int{i\dd{t}}. \numberthis
+		\end{equation*}
 
 		\par
-		E em amplitudes complexas:
+		\justify
+		Em amplitudes complexas, tem-se
 		\begin{gather*}
 			\bar{U}_G = \bar{U}_R + \bar{U}_L + \bar{U}_C = R\bar{I} + \mathrm{j} \omega L - \dfrac{\mathrm{j}}{\omega C}\bar{I} \eq \\
-			\eq \dfrac{\bar{U}_G}{\bar{I}} = \bar{Z} = R + \mathrm{j}(\omega L - \dfrac{1}{\omega C})
+			\eq \dfrac{\bar{U}_G}{\bar{I}} = \bar{Z} = R + \mathrm{j}(\omega L - \dfrac{1}{\omega C}) \numberthis
 		\end{gather*}
 
 	\subsubsection{a)}
 		\par
-		Na ressonância, $u_G$ e $i$ estão em fase, ou seja a impedância é real, logo:
+		\justify
+		Na situação de ressonância do circuito, $u_G$ e $i$ estão em fase.  Assim, tal como visto anteriormente, a impedância é puramente resistiva, portanto tem-se
 		\begin{gather*}
-			\omega_0 L = \dfrac{1}{\omega_0 C} \eq \\
-			\eq C = \dfrac{1}{\omega_0^2 L} = \dfrac{1}{(2\pi \times \num{40e3})^2 \times \num{2e-3}} \approx \SI{7.916}{\nano\farad}
+			Im(\bar{Z}) = \omega_0 L - \dfrac{1}{\omega_0 C} = 0 \\
+			\eq \omega_0 L = \dfrac{1}{\omega_0 C} \numberthis
+			\label{ressonância}
+		\end{gather*}
+		
+		De (\ref{ressonância}), é possível obter o valor da capacidade $C$, dado por
+		
+		\begin{gather*}
+			C = \dfrac{1}{\omega_0^2 L} = \dfrac{1}{(2\pi \times \num{40e3})^2 \times \num{2e-3}} \approx \SI{7.916}{\nano\farad}
 		\end{gather*}
 
 	\subsubsection{b)}
