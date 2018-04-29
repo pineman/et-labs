@@ -19,7 +19,8 @@
 	\allowdisplaybreaks
 \usepackage{physics}
 \usepackage{siunitx}
-	\sisetup{inter-unit-product =\ensuremath{.}}
+	\sisetup{inter-unit-product =\ensuremath{.}, output-complex-root=\ensuremath{j},
+		complex-root-position=before-number}
 \usepackage{hyperref}
 
 % Section styles
@@ -29,8 +30,6 @@
 
 % Useful commands
 \newcommand{\eq}{\Leftrightarrow} % Equivalente
-% Ordem de grandeza, e.g., "2\og{5}" => "2e5"
-\newcommand{\og}[1]{{\times \num{e#1}}}
 % Para numerar apenas uma equação
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
@@ -80,18 +79,51 @@
 		\large 16 de abril de 2018\\[1cm]
 		\setcounter{page}{0}
 	\end{titlepage}
-	%\tableofcontents
+	%\tableofcontents \newpage
 
 	\section{3. Dimensionamento}
 	\subsection{3.1}
-    $$ \bar{Z} = \bar{Z}_{R_S} + (\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d} $$
-    \subsection{3.2}
-    \subsubsection{a)}
-    \subsubsection{b)}
-    	\par
-      Obtido no Matlab.
-    \subsubsection{c)}
-    \subsubsection{d)}
+		\begin{gather*}
+			\bar{Z} = \bar{Z}_{R_S} + \underbrace{(\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d}}_{= \bar{Z}_{eq}} + \bar{Z}_C \\
+			\bar{Z}_{eq} = \dfrac{1}{\dfrac{1}{R_L + \mathrm{j} \omega L} + \mathrm{j} \omega C_d} =
+			\dfrac{1}{\dfrac{1 + (R_L + \mathrm{j} \omega L)(\mathrm{j} \omega C_d)}{R_L + \mathrm{j} \omega L}} =
+			\dfrac{R_L + \mathrm{j} \omega L}{1 + (R_L + \mathrm{j} \omega L)(\mathrm{j} \omega C_d)} \\
+			\implies \bar{Z} = R_S + \dfrac{R_L + \mathrm{j} \omega L}{1 + (R_L + \mathrm{j} \omega L)(\mathrm{j} \omega C_d)} + \dfrac{1}{\mathrm{j} \omega C} = \\
+			= R_S + \dfrac{1}{\mathrm{j} \omega C} + \dfrac{\left(R_L + \mathrm{j} \omega L\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{R_L + \mathrm{j} \omega L + \dfrac{1}{\mathrm{j} \omega C_d}} = \\
+			= R_S + \dfrac{1}{\mathrm{j} \omega C} + \dfrac{\left(\dfrac{R_L}{\omega L} + \mathrm{j}\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{\dfrac{R_L}{\omega L} + \mathrm{j} + \dfrac{1}{\mathrm{j} \omega^2 C_d L}} = \\
+			= R_S + \dfrac{1}{\mathrm{j} \omega C} + \dfrac{\dfrac{1}{\omega C_d}}{\mathrm{j} + \dfrac{1}{\mathrm{j} \omega^2 C_d L}} = \\
+			= R_S + \dfrac{1}{\mathrm{j} \omega C} + -\mathrm{j}\dfrac{1}{\omega C_d - \omega L} \\
+			= R_S + -\mathrm{j}\underbrace{\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \omega L}\right)}_{= 0}
+		\end{gather*}
+	\subsection{3.2}
+		\par
+		A equação do circuito no domínio do tempo são:
+		\begin{gather*}
+			u_G = u_R + u_L + u_C = Ri + L\dv{i}{t} + \dfrac{1}{C} \int{i\dd{t}}
+		\end{gather*}
+
+		\par
+		E em amplitudes complexas:
+		\begin{gather*}
+			\bar{U}_G = \bar{U}_R + \bar{U}_L + \bar{U}_C = R\bar{I} + \mathrm{j} \omega L - \dfrac{\mathrm{j}}{\omega C}\bar{I} \eq \\
+			\eq \dfrac{\bar{U}_G}{\bar{I}} = \bar{Z} = R + \mathrm{j}(\omega L - \dfrac{1}{\omega C})
+		\end{gather*}
+
+	\subsubsection{a)}
+		\par
+		Na ressonância, $u_G$ e $i$ estão em fase, ou seja a impedância é real, logo:
+		\begin{gather*}
+			\omega_0 L = \dfrac{1}{\omega_0 C} \eq \\
+			\eq C = \dfrac{1}{\omega_0^2 L} = \dfrac{1}{(2\pi \times \num{40e3})^2 \times \num{2e-3}} \approx \SI{7.916}{\nano\farad}
+		\end{gather*}
+
+	\subsubsection{b)}
+		\par
+		Obtido no Matlab.
+
+	\subsubsection{c)}
+
+	\subsubsection{d)}
 
 	%\begin{figure}[h]
 	%	\centering
