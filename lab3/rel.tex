@@ -44,7 +44,7 @@
 \fancyhf{}
 \lhead{Electrotecnia Teórica}
 \rhead{3º Laboratório}
-\lfoot{IST - Engenharia Eletrotécnica e de Computadores}
+\lfoot{IST - MEEC}
 \rfoot{Página \thepage}
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\footrulewidth}{0.5pt}
@@ -98,7 +98,8 @@
 		\par
 		Pela análise do circuito da figura \ref{fig:circuito2}, a expressão da impedância é dada por
 		\begin{equation}
-			\bar{Z} = \bar{Z}_{R_S} + \bar{Z}_{\parallel} + \bar{Z}_C,
+			\bar{Z} = \bar{Z}_{R_S} + \bar{Z}_{\parallel} + \bar{Z}_C
+			\label{eq:Z}
 		\end{equation}
 		\par
 		onde
@@ -106,13 +107,13 @@
 			\bar{Z}_{\parallel} = (\bar{Z}_{R_L} + \bar{Z}_{L}) \parallel \bar{Z}_{C_d} = \dfrac{\left(R_L + \mathrm{j} \omega L\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{(R_L + \mathrm{j} \omega L) + \dfrac{1}{\mathrm{j} \omega C_d}}, \hspace{2pt}\omega \neq 0.
 		\end{equation}
 		\par
-		Supondo que $R_L \ll \omega L$, tem-se
+		Supondo que $R_L \ll \omega L$, por (\ref{eq:Z}) tem-se
 		\begin{align*}
 			\bar{Z} &= R_S + \dfrac{\left(R_L + \mathrm{j} \omega L\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{R_L + \mathrm{j} \omega L + \dfrac{1}{\mathrm{j} \omega C_d}} + \dfrac{1}{\mathrm{j} \omega C} \\
 			&= R_S + \dfrac{1}{\mathrm{j} \omega C} + \dfrac{\left(\dfrac{R_L}{\omega L} + \mathrm{j}\right)\left(\dfrac{1}{\mathrm{j} \omega C_d}\right)}{\dfrac{R_L}{\omega L} + \mathrm{j} + \dfrac{1}{\mathrm{j} \omega^2 C_d L}} \\
 			&\approx R_S + \dfrac{1}{\mathrm{j} \omega C} + \dfrac{\dfrac{1}{\omega C_d}}{\mathrm{j} + \dfrac{1}{\mathrm{j} \omega^2 C_d L}} \nonumber \\
 			&= R_S + \dfrac{1}{\mathrm{j} \omega C} + -\mathrm{j}\dfrac{1}{\omega C_d - \dfrac{1}{\omega L}} \\
-			&= \underbrace{R_S}_{=\Re{\bar{Z}}} + -\mathrm{j}\underbrace{\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right)}_{=\Im{\bar{Z}}}, \hspace{2pt}\omega \neq 0. \numberthis \\
+			&= \underbrace{R_S}_{\scalebox{1}{$\Re{\bar{Z}}$}} + -\mathrm{j}\underbrace{\left(\dfrac{1}{\omega C} + \dfrac{1}{\omega C_d - \dfrac{1}{\omega L}}\right)}_{\scalebox{1}{$\Im{\bar{Z}}$}}, \hspace{2pt}\omega \neq 0. \numberthis \\
 		\end{align*}
 
 		\par
