@@ -30,7 +30,7 @@ endfunction
 
 function y = alfaZ(R, w, L, C)
 	y = atan2(w*L - 1/(w*C), R);
-endfunction	
+endfunction
 
 function y = Ief(Rs, w, L, C)
 	y = 1 / Z(Rs, w, L, C); % Ug = 1 V sempre
@@ -38,34 +38,34 @@ endfunction
 
 function y = alfaI(Rs, w, L, C)
 	y = - alfaZ(Rs, w, L, C);
-endfunction	
+endfunction
 
 function y = Ucef(Rs, w, L, C)
 	y = Ief(Rs, w, L, C) / (w*C);
-endfunction	
+endfunction
 
 function y = alfaUc(Rs, w, L, C)
 	y = alfaI(Rs, w, L, C) - (pi/2);
-endfunction	
+endfunction
 
 function y = Ulef(Rs, w, L, C)
 	y = Ief(Rs, w, L, C) * w*L;
-endfunction	
+endfunction
 
 function y = alfaUl(Rs, w, L, C)
 	y = alfaI(Rs, w, L, C) + (pi/2);
-endfunction	
+endfunction
 
 function y = Uref(Rs, w, L, C)
 	y = Ief(Rs, w, L, C) * Rs;
-endfunction	
+endfunction
 
 function y = alfaUr(Rs, w, L, C)
 	y = alfaI(Rs, w, L, C);
-endfunction	
+endfunction
 
 for f = [f0 0.95*f0 1.05*f0]
-	f	
+	f
 	w = 2*pi*f;
 	printf("Ief = %f ∠ %f\n", Ief(Rs1, w, L, C), rad2deg(alfaI(Rs1, w, L, C)));
 	printf("Ucef = %f ∠ %f\n", Ucef(Rs1, w, L, C), rad2deg(alfaUc(Rs1, w, L, C)));
@@ -77,8 +77,8 @@ endfor
 %% Experimental
 % 5.1/6.1
 disp('5.1');
-f = [ 1; 2; 3; ];
-Cexp = [ 5; 6; 7; ];
+f = [    40.4e3; 50.4e3; 60.1e3; 70e3;   80e3;   90e3; ];
+Cexp = [ 7.9e-9; 5e-9;   3.4e-9; 2.5e-9; 1.9e-9; 1.45e-9; ];
 x = Cexp;
 y = 1./(f.^2);
 figure;
@@ -105,18 +105,7 @@ L = m/(4*pi^2)
 Cd = b/(4*pi^2*L)
 
 % 5.2 a) / 6.2
+%{
 disp('5.2 a)');
-Cexp = ;
-%fexp = [f0 0.95*f0 1.05*f0];
-fexp = [ ];
-delta_t = [ ];
-for f = fexp
-	f
-	w = 2*pi*f;
-	%alfaI = w * delta_t
-	printf("Ief = %f ∠ %f\n", Ief(Rs1, w, L, C), rad2deg(alfaI(Rs1, w, L, C)));
-	disp('');
-endfor
-
+%}
 % 5.2 b) / 6.3
-
