@@ -91,35 +91,31 @@
 
 	\section{Dimensionamento}
 	% 2.1
-	\subsection{}
+	\subsection{Circuito RL-série}
 	% a)
 	\subsubsection{}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.55\linewidth]{rl.png}
-			\caption{Circuito RL série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$ (retirado do enunciado e alterado)}
+			\caption{Circuito RL série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$ (adaptação da figura do enunciado)}
 			\label{fig:circ_rl}
 		\end{figure}
 		\par
-		Por aplicação da lei de indução no caminho $\vec{l}$ assinalado na \autoref{fig:circ_rl} e desprezando efeitos resistivos fora da resistência temos
+		Por aplicação da Lei de Indução no caminho $\vec{l}$ assinalado na \autoref{fig:circ_rl}, desprezando efeitos resistivos nos fios condutores e na bobina e considerando o circuito linear, obtém-se
 		\begin{align*}
 			&\ointclockwise_{\vec{l}} \vec{E} \vdot \dd{\vec{l}} = - \dv{\psi_{\vec{l}}}{t} \\ \eq
 			&0 + u_R(t) - u_g(t) = - \dv{\psi_{\vec{l}}}{t} \\ \eq
-			&u_g(t) = Ri(t) + N \dv{\phi}{t},
+			&u_g(t) = Ri(t) + L \dv{i(t)}{t}, \numberthis \label{eq:trans_RL}
 		\end{align*}
-		onde $N$ é o número de espiras da bobina e $\phi$ o fluxo que atravessa cada uma das espiras. Considerando o circuito linear temos ainda
-		\begin{align*}
-			&N \dv{\phi}{t} = L \dv{i(t)}{t} \\ \implies
-			&u_g(t) = Ri(t) + L \dv{i(t)}{t}. \numberthis \label{eq:trans_RL}
-		\end{align*}
+		
 		\par
-		Em $t = 0$ o gerador é ligado. Como $i(t)$ é uma variável de estado, pela continuidade da energia magnética na bobina, terá um regime transitório. A solução do regime transitório da corrente $i(t)$, dado por \eqref{eq:trans_RL}, é a soma do regime livre homogéneo (sem fontes) e do regime forçado estabelecido pelo gerador sinusoidal (quando $t \to \infty$), ou seja, $i(t) = i_l(t) + i_f(t)$.
+		No instante $t = 0$, o gerador é ligado e impõe-se a tensão $u_{g}$ dada na \autoref{fig:circ_rl}. Como $i(t)$ é uma variável de estado, pela continuidade da energia magnética na bobina, terá um regime transitório. A solução do regime transitório da corrente $i(t)$, obtida a partir de \eqref{eq:trans_RL}, é a soma do regime livre (sem fontes) e do regime forçado estabelecido pelo gerador sinusoidal (quando $t \to \infty$), ou seja, $i(t) = i_l(t) + i_f(t)$. \\
 		\par
 		O regime forçado é então dado por
 		\begin{align*}
 			&\sqrt{2}U_{ef}\cos\left(\omega t + \alpha\right) = Ri_f(t) + L \dv{i_f(t)}{t}
 		\end{align*}
-		e em amplitude complexa
+		e, em amplitudes complexas, é dado por
 		\begin{align*}
 			&\bar{U}_g = R\bar{I}_f + \jj \omega L\bar{I}_f \\ \eq
 			&\dfrac{\bar{U}_g}{\bar{I}_f} = \bar{Z} = R + \jj \omega L = Z\e^{\jj\varphi},
@@ -135,7 +131,7 @@
 			&i_f(t) = \Re{\bar{I}_f \e^{\jj \omega t}} = \Re{\dfrac{\sqrt{2}U_{ef}}{Z} \e^{\jj\left(\omega t + \alpha - \varphi\right)}} = \\ \eq
 			&i_f(t) = \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega t + \alpha - \varphi\right), \numberthis \label{eq:trans_RL_forc}
 		\end{align*}
-		em que $- \varphi = \SI{-1.46}{\radian} = \SI{-83.6}{\degree}$ é a desfasagem entre a tensão $u_g(t)$ e $i(t)$ em regime forçado.
+		em que $- \varphi = \SI{-1.46}{\radian} = \SI{-83.64}{\degree}$ é a desfasagem entre a tensão $u_g(t)$ e $i(t)$ em regime forçado.\\
 		\par
 		O regime livre é a solução da equação homogénea de \eqref{eq:trans_RL}
 		\begin{align*}
@@ -148,20 +144,20 @@
 			&0 = R + Ls \\ \eq
 			&s = - \dfrac{R}{L} = - \dfrac{1}{\tau},
 		\end{align*}
-		onde $\tau = \frac{L}{R} = \SI{0.286}{\milli\second}$ é a constante de tempo do circuito.
+		onde $\tau = \frac{L}{R} = \SI{0.286}{\milli\second}$ é a constante de tempo do circuito. \\
 		\par
-		A solução é então dada por
+		A solução do regime livre é então dada por
 		\begin{align*}
 			i_l(t) = I \e^{st} = I \e^{-\frac{t}{\tau}},
 		\end{align*}
 		onde a única constante de integração $I$ é determinada pela continuidade da corrente $i(t)$ na bobina
 		\begin{align*}
-			i(0^-) = i(0^+) = i_f(0^+) + i_l(0+).
+			i(0^-) = i(0^+) = i_f(0^+) + i_l(0^+).
 		\end{align*}
 		\par
-		Dado que a corrente em $t < 0$ era nula e como $\alpha = \frac{\pi}{2}$
+		Dado que a corrente em $t < 0$ era nula e como $\alpha = -\frac{\pi}{2}$
 		\begin{align*}
-			&0 =  \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega 0 + \alpha - \varphi\right) + I \e^{-\frac{0}{\tau}} \\ \eq
+			&0 =  \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega \times 0 + \alpha - \varphi\right) + I \e^{-\frac{0}{\tau}} \\ \eq
 			&I = - \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(- \frac{\pi}{2} - \varphi\right) = \SI{0.445}{\milli\ampere},
 		\end{align*}
 		sendo o regime transitório finalmente dado por
@@ -198,7 +194,7 @@
 	% c)
 	\subsubsection{}
 	\par
-	Recorrendo ao \textit{matlab}, a partir de \eqref{eq:extr}, calcularam-se os primeiros cinco extremos da corrente em regime transitório $i(t)$ e registaram-se os valores na \autoref{tab:extremos}.
+	Recorrendo ao \textit{MATLAB}, a partir de \eqref{eq:extr}, calcularam-se os primeiros cinco extremos da corrente em regime transitório $i(t)$ e registaram-se os valores na \autoref{tab:extremos}.
 	\begin{table}[H]
 		\centering
 		\caption{Cinco primeiros extremos da corrente $i(t)$}
@@ -216,24 +212,24 @@
 		\end{tabular}
 	\end{table}
 	\par
-	Pelo método númerico de Newton, testa-se a validade da hipótese dos extremos de \eqref{eq:trans_RL_sol} se darem nos extremos da função cosseno apenas (desprezando o fator exponencial). Este método é iterativamente dado por
+	Pelo método numérico de Newton, testa-se a validade da hipótese dos extremos de \eqref{eq:trans_RL_sol} se darem apenas nos extremos da função cosseno (desprezando o fator exponencial). Este método é iterativamente dado por
 	\begin{align*}
 		x_{n+1} = x_n - \dfrac{f(x_n)}{f'(x_n)}
 	\end{align*}
-	para uma função $f(x) = 0$ qualquer.
+	para uma função $f(x) = 0$ qualquer. \\
 	\par
-	Os extremos de $i(t)$ dão-se quando $i'(t) = 0$, logo será esta a função $f(x)$ a utlizar no método de Newton. Para tal ainda é necessário a derivada de $i'(t)$
+	Os extremos de $i(t)$ dão-se quando $i'(t) = 0$, logo será esta a função $f(x)$ a utilizar no método de Newton. Para tal ainda é necessário a derivada de $i'(t)$
 	\begin{align*}
 		&i'(t) = \dfrac{\sqrt{2}U_{ef}}{Z} \left[-\omega \sin\left(\omega t + \alpha - \varphi\right) + \dfrac{\cos\left(\alpha - \varphi\right)}{\tau}\e^{-\frac{t}{\tau}}\right] \\
 		&i''(t) = \dfrac{\sqrt{2}U_{ef}}{Z} \left[-\omega^2 \cos\left(\omega t + \alpha - \varphi\right) + \dfrac{\cos\left(\alpha - \varphi\right)}{\tau^2}\e^{-\frac{t}{\tau}}\right].
 	\end{align*}
 	\par
-	Foi calculado o primeiro extremo por recurso ao \textit{matlab}, impondo um erro $\epsilon = \num{e-6} \geq \abs{x_{n+1} - x_n}$ e uma aproximação inicial de $t = \SI{0.090}{\milli\second}$ (o valor aproximado obtido por \eqref{eq:extr_insts} foi $t = \SI{0.096}{\milli\second}$). O método de Newton convergiu para $t = \SI{0.09393}{\milli\second}$ em três iterações, o que significa que a aproximação apresenta um erro de apenas $\SI{2.07}{\micro\second}$ ou um erro relativo de $0.22\%$. Conclui-se assim que a aproximação é válida.
+	Recorrendo ao \textit{MATLAB}, foi calculado o primeiro extremo, impondo um erro $\epsilon = \num{e-6} \geq \abs{x_{n+1} - x_n}$ e uma aproximação inicial de $t = \SI{0.090}{\milli\second}$ (o valor aproximado obtido por \eqref{eq:extr_insts} foi $t = \SI{0.096}{\milli\second}$). O método de Newton convergiu para $t = \SI{0.09393}{\milli\second}$ em três iterações, o que significa que a aproximação apresenta um erro de apenas $\SI{2.07}{\micro\second}$ ou um erro relativo de $0.22\%$. Conclui-se assim que a aproximação é válida.
 
 	% d)
 	\subsubsection{}
 	\par
-	Como a tensão $u_g(t)$ é desligada quando estava a passar por zero de valores negativos para positivos, o regime forçado do circuito será nulo e o instante quando é desligado o gerador é
+	Como a fonte de tensão é desligada num instante em que $u_g$ é 0 passando de valores negativos para positivos, o regime forçado do circuito será nulo e o instante em que tal ocorre é
 	\begin{align*}
 		&\sqrt{2}U_{ef} \cos\left(\omega t_0 + \alpha\right) = 0 \\ \eq
 		&\omega t_0 + \alpha = \dfrac{-\pi}{2} + k\pi, k \in \mathbb{Z} \\ \eq
@@ -242,20 +238,20 @@
 	\par
 	O novo regime transitório é
 	\begin{align*}
-		i(t) = i_f(t) + i_l(t) = i_l(t).
+		i(t) = \cancelto{0}{i_{f_0}(t)} + i_{l_0}(t) = i_{l_0}(t).
 	\end{align*}
 	\par
 	A forma de solução regime livre mantém-se, sendo
 	\begin{align*}
 		i_{l_0}(t) = I_0 \e^{-\frac{t}{\tau}}. \numberthis \label{eq:trans_RL_2livre}
 	\end{align*}
-	onde a constante de tempo também se mantém, $\tau = \frac{L}{R} = \SI{0.286}{\milli\second}$.
+	onde a constante de tempo também se mantém, $\tau = \frac{L}{R} = \SI{0.286}{\milli\second}$. \\
 	\par
-	Para determinar a constante de integração $I_0$, novamente impõe-se a condição de continuidade da energia magnética na bobina
+	Para determinar a constante de integração $I_0$, impõe-se, novamente, a condição de continuidade da energia magnética na bobina
 	\begin{align*}
-		i(t_0^-) = i(t_0+) = i_{l_0}(t_0),
+		i(t_0^-) = i(t_0^+) = i_{l_0}(t_0),
 	\end{align*}
-	e, como quando gerador foi desligado, o regime livre determinado na alínea a) já estava extinguido, ou seja, só existia regime forçado
+	e, tendo em conta que quando gerador foi desligado, o regime livre determinado na alínea a) já estava extinto, ou seja, só existia regime forçado, tem-se
 	\begin{align*}
 		i(t_0^-) = i_f(t_0) = \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega t_0 + \alpha - \varphi\right) = i_{l_0}(t_0^+) = I_0 \e^{-\frac{t_0}{\tau}}.
 	\end{align*}
@@ -265,7 +261,7 @@
 		I_0 = \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\alpha - \varphi\right) \approx \SI{-0.445}{\milli\ampere}
 	\end{align*}
 	\par
-	Constata-se que esta segunda constante de integração é simétrica da encontrada na alínea a). Tal faz sentido porque, dum ponto de vista energético, na alínea a), o circuito passava dum estado descarregado para um estado carregado e, nesta alínea, o contrário. Além disso, o gerador foi comutado exatamente na mesma fase da tensão $u_g$, o que justifica a igualdade em módulo dos dois regimes livres. Apenas que na situação em a), a exponencial era positiva, "carregando" a bobina, e nesta alínea a exponencial é negativa, "descarregando" a bobina.
+	Constata-se que esta segunda constante de integração é simétrica da encontrada na alínea a). Tal faz sentido porque, de um ponto de vista energético, na alínea a), o circuito passava dum estado descarregado para um estado carregado e, nesta alínea, o contrário. Além disso, o gerador foi comutado exatamente na mesma fase da tensão $u_g$, o que justifica a igualdade em módulo dos dois regimes livres. Na situação em a), a exponencial era positiva, "carregando" a bobina, porém, nesta alínea, a exponencial é negativa, "descarregando" a bobina.
 	% e)
 	\subsubsection{}
 	\par
@@ -274,22 +270,21 @@
 		i_{l_0}(\tau) = I_0\e^{-\frac{\tau}{\tau}} = I_0 \e^{-1} = \dfrac{I_0}{\e}
 	\end{align*}
 	\par
-	Observa-se que, para qualquer regime livre com esta forma geral, para $t = \tau$, o valor da variável será $\frac{1}{e}\% \approx 36,8\%$ do valor máximo inicial.
+	Observa-se que, para qualquer regime livre com esta forma geral, para $t = \tau$, o valor da variável será $\frac{1}{\e}\% \approx 36,8\%$ do valor máximo inicial.
 
 	% 2.2
 	\subsection{Circuito RLC-série}
-	\subsection{}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.7\linewidth]{rlc.png}
-			\caption{Circuito RLC série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$ (retirado do enunciado e alterado)}
+			\caption{Circuito RLC série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$ (adaptação da figura do enunciado)}
 			\label{fig:circ_rlc}
 		\end{figure}
 	% a)
 	\subsubsection{}
 
 		\par
-		Para $t \geq 0$, não existe a fonte de alimentação ($U_G = 0$) e portanto, ao aplicar a Lei da Indução (considerando o circuito linear), obtém-se
+		Para $t \geq 0$, a fonte de alimentação ($U_G = 0$) é desligada e, portanto, ao aplicar a Lei da Indução (considerando o circuito linear) no caminho $\vec{l}$ assinalado na \autoref{fig:circ_rlc}, obtém-se
 
 		\begin{align*}
 			&\ointclockwise_{\vec{l}} \vec{E} \vdot \dd{\vec{l}} = - \dv{\psi_{\vec{l}}}{t} \\ \eq
@@ -301,9 +296,9 @@
 		Fazendo a derivada em ordem ao tempo, obtém-se a equação diferencial de segunda ordem dada por
 
 		\begin{align*}
-			&L \dv[2]{I(t)}{t} + R\dv{I(t)}{t} + \frac{1}{C}i(t) = 0 \\ \eq
-			&\dv[2]{I(t)}{t} + 2\frac{R}{2L}\dv{i(t)}{t} + \frac{1}{LC}i(t) = 0 \\ \eq
-			&\dv[2]{I(t)}{t} + 2\beta \dv{i(t)}{t} + \omega_{0}^{2} i(t) = 0, \numberthis \label{eq_dif_2ordem}
+			&L \dv[2]{i(t)}{t} + R\dv{i(t)}{t} + \frac{1}{C}i(t) = 0 \\ \eq
+			&\dv[2]{i(t)}{t} + 2\frac{R}{2L}\dv{i(t)}{t} + \frac{1}{LC}i(t) = 0 \\ \eq
+			&\dv[2]{i(t)}{t} + 2\beta \dv{i(t)}{t} + \omega_{0}^{2} i(t) = 0, \numberthis \label{eq_dif_2ordem}
 		\end{align*}
 
 		sendo $\beta$ o coeficiente de amortecimento e $\omega_{0}$ a frequência angular das oscilações não amortecidas. Assim, o valor de $\omega_{0}$ é dado por
@@ -316,7 +311,7 @@
 	\subsubsection{}
 
 		\par
-		Sendo necessária a continuidade da energia elétrica no condensador e da energia magnética na bobina, a tensão no condensador e a corrente na bobina têm de ser idênticos no instante imediatamente antes à comutação do interruptor $S$ e no instante imediatamente depois, ou seja
+		Sendo necessária a continuidade da energia elétrica no condensador e da energia magnética na bobina, a tensão no condensador e a corrente na bobina têm de ser idênticas no instante imediatamente antes da comutação do interruptor $S$ e no instante imediatamente depois, ou seja
 		\begin{align*}
 			u_{C}(0^{+}) &= u_{C}(0^{-})\\
 			  i_{L}(0^{+}) &= i_{L}(0^{-}).
@@ -332,55 +327,50 @@
 			u_{C}(0^{+}) = u_{C}(0^{-}) = \SI{4}{\volt}. \numberthis \label{cond_inicial_tensão}
 		\end{align*}
 
-		Para $t > 0$, devido à comutação do interruptor $S$, o novo circuito deixa de estar alimentado, havendo apenas regime livre, não existindo regime forçado, ou seja $i_f(t) = 0$.
+		Para $t > 0$, devido à comutação do interruptor $S$, o novo circuito deixa de estar alimentado, não existindo regime forçado, ou seja $i_f(t) = 0$.
 
 	% c)
 	\subsubsection{}
 
 		\par
-		Existindo apenas regime livre, fazendo $i(t) = e^{st}$ em \ref{eq_dif_2ordem}, obtém-se a equação característica dada por
+		Substituindo $i(t) = \e^{st}$ em \eqref{eq_dif_2ordem}, obtém-se a equação característica dada por
 		\begin{align*}
 			&s^{2} + 2\beta s + \omega_{0}^{2} = 0 .\numberthis \label{eq_caract_2ordem_sol}
 		\end{align*}
 
-		Aplicando a fórmula resolvente, obtém-se as raízes da equação \ref{eq_caract_2ordem_sol}, dadas por
+		Aplicando a fórmula resolvente, obtém-se as raízes da equação \eqref{eq_caract_2ordem_sol}, dadas por
 		\begin{align*}
 			&s =   -\beta \pm \sqrt{ \beta^{2} - \omega_{0}^{2}}, \numberthis \label{sol_eq_caract_2ordem}
 		\end{align*}
 
-		originando 3 soluções distintas.
+		originando 3 soluções distintas:
 
 		\begin{itemize}
 			\item $\beta > \omega_{0} \implies \dfrac{R}{2L} > \dfrac{1}{\sqrt{LC}} \eq R > 2
-			\sqrt{\dfrac{L}{C}}$, gerando um regime aperiódico
+			\sqrt{\dfrac{L}{C}}$, gerando um regime aperiódico;
 
 			\item $\beta = \omega_{0} \implies \dfrac{R}{2L} = \dfrac{1}{\sqrt{LC}} \eq R = 2
-			\sqrt{\dfrac{L}{C}}$, gerando um regime aperiódico limite
+			\sqrt{\dfrac{L}{C}}$, gerando um regime aperiódico limite;
 
 			\item $\beta < \omega_{0} \implies \dfrac{R}{2L} < \dfrac{1}{\sqrt{LC}} \eq R < 2
-			\sqrt{\dfrac{L}{C}}$, gerando um regime oscilatório amortecido
+			\sqrt{\dfrac{L}{C}}$, gerando um regime oscilatório amortecido.
 		\end{itemize}
 
 	% d)
 	\subsubsection{}
 
 		\par
-		Para $R = \SI{200}{\ohm} $, obtém-se $\beta = \dfrac{200}{2 \times \num{8e-3}} = \SI{12.5e3}{\neper\per\second}$. Como $\beta < \omega_{0}$, verifica-se que a solução é do tipo oscilatório amortecido. Sendo do tipo oscilatório amortecido, de \ref{sol_eq_dif_2ordem} retira-se
+		Para $R = \SI{200}{\ohm} $, obtém-se $\beta = \dfrac{200}{2 \times \num{8e-3}} = \SI{12.5e3}{\neper\per\second}$. Como $\beta < \omega_{0}$, verifica-se que a solução é do tipo oscilatório amortecido. Logo, de \eqref{sol_eq_dif_2ordem}, retira-se
 		\begin{align*}
 			&s =   -\beta \pm \jj \omega,
 		\end{align*}
 
-		onde $\omega = \sqrt{\omega_{0}^{2} - \beta^{2}}$ é a frequência angular das oscilações amortecidas. Assim, o valor deste é dado por
+		onde $\omega = \sqrt{\omega_{0}^{2} - \beta^{2}} \approx \SI{48.412e3}{\radian\per\second}$ é a frequência angular das oscilações amortecidas. Uma vez que as soluções da equação característica são 2 raízes complexas conjugadas, a solução do regime livre é dada por
 		\begin{align*}
-			\omega = \sqrt{\omega_{0}^{2} - \beta^{2}} \approx \SI{48.412e3}{\radian\per\second}.
+			i(t) = i_l (t) =  \bar{I_1}\e^{st} + \bar{I_2}\e^{s^{*}t}
 		\end{align*}
 
-		Uma vez que a solução da equação característica são 2 raízes complexas conjugadas, a solução da equação diferencial é dada por
-		\begin{align*}
-			&i(t) = \bar{I_1}\e^{st} + \bar{I_2}\e^{s^{*}t}
-		\end{align*}
-
-		Como i(t) é real, $\bar{I_{1}}$ e $\bar{I_{2}}$ são necessariamente complexos conjugados. Definindo $\bar{I} = 2\bar{I_1} = I\e^{j\alpha}$, tem-se
+		Como $i(t)$ é real, $\bar{I_{1}}$ e $\bar{I_{2}}$ são necessariamente complexos conjugados. Definindo $\bar{I} = 2\bar{I_1} = I\e^{j\alpha}$, tem-se
 		\begin{align*}
 			& i(t) = \Re{\bar{I}\e^{st}} \\ \eq
 			& i(t) = \Re{I\e^{j\alpha}\e^{(-\beta + j\omega)t}} \\ \eq
@@ -388,7 +378,7 @@
 			& i(t) = I\e^{-\beta t} \cos{(\omega t + \alpha)}. \numberthis \label{sol_eq_dif_2ordem}
 		\end{align*}
 
-		Verifica-se que, de \ref{sol_eq_dif_2ordem}, a corrente i(t) terá amplitudes máximas (em módulo) quando o valor do coseno for máximo ou mínimo. Considerando a corrente i(t) apresentada na \autoref{fig:i_aten}, verifica-se que os valores absolutos dos máximos da função são dados por
+		Verifica-se que, de \eqref{sol_eq_dif_2ordem}, a corrente $i(t)$ terá amplitudes máximas (em módulo) quando o valor do cosseno for máximo ou mínimo. Considerando a corrente $i(t)$ apresentada na \autoref{fig:i_aten}, verifica-se que os valores absolutos dos máximos da função são dados por
 		\begin{gather*}
 			 A_1 = I\e^{-\beta \frac{T}{4}} \\
 			 A_2 = I\e^{-\beta(\frac{T}{4} + \frac{T}{2})} \\
@@ -411,7 +401,7 @@
 			\label{fig:i_aten}
 		\end{figure}
 
-		Tendo em conta as condições iniciais estabelecidas em \eqref{cond_inicial_corrente} e \eqref{cond_inicial_tensão}, é possível determinar a corrente i(t) e a tensão $u_{C}$. Para determinar a constante de integração de i(t), recorre-se ao regime forçado quando $t < 0$. Assim, da aplicação da Lei da Indução no caminho $l$ previamente escolhido, obtém-se
+		Tendo em conta as condições iniciais estabelecidas em \eqref{cond_inicial_corrente} e \eqref{cond_inicial_tensão}, é possível determinar a corrente $i(t)$ e a tensão $u_{C}$. Para determinar a constante de integração de $i(t)$, recorre-se ao regime forçado quando $t < 0$. Assim, da aplicação da Lei da Indução no caminho $\vec{l}$ previamente escolhido, obtém-se
 		\begin{gather*}
 			u_R(t) + u_C(t) + 0 = - \dv{\psi_{\vec{l}}}{t} \\ \eq
 			u_C(t) = -Ri(t) - L\dv{i(t)}{t} \numberthis \label{eq_Uc_lei_ind} \\ \eq
@@ -461,12 +451,12 @@
 			 R_0 = R = 2\sqrt{\frac{L}{C}} = \SI{800}{\ohm}.
 		\end{align*}
 
-		Assim, equação característica \eqref{eq_caract_2ordem_sol} tem 2 raízes reais iguais, ou seja multiplicidade 2, e, portanto, a solução da equação diferencial é dada por
+		Assim, a equação característica \eqref{eq_caract_2ordem_sol} tem 2 raízes reais iguais, ou seja de dupla multiplicidade, e, portanto, a solução do regime livre é dada por
 		\begin{align*}
 			i ( t ) = ( A + B t ) \e ^ { s t }, \numberthis \label{eq_i_regime_ap_limite}
 		\end{align*}
 
-		onde, de \eqref{sol_eq_caract_2ordem}, tendo $\beta = \omega_{0}$, se obtém $s = - \beta$.
+		onde, de \eqref{sol_eq_caract_2ordem}, tendo $\beta = \omega_{0}$, se obtém $s = - \beta$. \\
 
 		De \eqref{cond_inicial_corrente}, retira-se
 		\begin{gather*}
@@ -493,12 +483,12 @@
 
 		Fazendo a derivada em ordem ao tempo de \eqref{eq_i_regime_ap_limite_2} e igualando a 0, obtém-se o instante $t_{min}$ dado por
 		\begin{gather*}
-			\dv{i(t)}{dt} = B\left( \e^{-\beta t} - \beta t e^{-\beta t}\right) = 0 \\ \eq
-			e^{-\beta t} = \beta t\e^{-\beta t} \\ \eq
+			\dv{i(t)}{dt} = B\left( \e^{-\beta t} - \beta t \e^{-\beta t}\right) = 0 \\ \eq
+			\e^{-\beta t} = \beta t\e^{-\beta t} \\ \eq
 			t = \frac{1}{\beta} = \SI{20}{\micro\second}.
 		\end{gather*}
 
-		Substituindo em \eqref{eq_i(t)_final}, obtém-se o valor de $i(t_{min})$
+		Substituindo em \eqref{eq_i(t)_final}, obtém-se o valor de $i(t_{min})$, sendo este
 		\begin{gather*}
 			i(t_{min}) = -500t_{min}\e^{-\num{50e3}t_{min}} = \SI{-3.679}{\milli\ampere}.
 		\end{gather*}
