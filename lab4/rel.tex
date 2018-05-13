@@ -247,7 +247,7 @@
 	\subsubsection{}
 
 		\par
-		Para $t \geq 0$, não existe a fonte de alimentação ($U_G = 0$) e portanto, ao aplicar a Lei da Indução Magnética (considerando o circuito linear), obtém-se
+		Para $t \geq 0$, não existe a fonte de alimentação ($U_G = 0$) e portanto, ao aplicar a Lei da Indução (considerando o circuito linear), obtém-se
 
 		\begin{align*}
 			&\ointclockwise_{\vec{l}} \vec{E} \vdot \dd{\vec{l}} = - \dv{\psi_{\vec{l}}}{t} \\ \eq
@@ -362,11 +362,54 @@
 			 \lambda = \beta \frac{T}{2} = \SI{0.811}{\neper}.
 		\end{align*}
 
-		Tendo em conta as condições iniciais estabelecidas \ref{cond_inicial_corrente} e \ref{cond_inicial_tensão}, é possível determinar a corrente i(t) e a tensão $u_{C}$. Para determinar a constante de integração de i(t), recorre-se ao regime forçado quando $t < 0$. Assim, aplicando
-
+		Tendo em conta as condições iniciais estabelecidas em \eqref{cond_inicial_corrente} e \eqref{cond_inicial_tensão}, é possível determinar a corrente i(t) e a tensão $u_{C}$. Para determinar a constante de integração de i(t), recorre-se ao regime forçado quando $t < 0$. Assim, da aplicação da Lei da Indução no caminho $l$ previamente escolhido, obtém-se 
+		\begin{gather*}
+			u_R(t) + u_C(t) + 0 = - \dv{\psi_{\vec{l}}}{t} \\ \eq
+			u_C(t) = -Ri(t) - L\dv{i(t)}{t} \\ \eq
+			u_C(t) = -R \left[ I\e^{-\beta t} \cos{(\omega t + \alpha)} \right] - L \left[ -\beta I\e^{-\beta t} \cos{(\omega t + \alpha)} - \omega I\e^{-\beta t} \sin{(\omega t + \alpha)}\right]
+		\end{gather*}
+		
+		De \eqref{cond_inicial_corrente}, retira-se 
+		\begin{align*}
+			 I\e^{-\beta \times 0} \cos{(\omega \times 0 + \alpha)} = 0 \\ \eq
+			 I\cos{(\alpha)} = 0 \implies \alpha = \pm \frac{\pi}{2}
+		\end{align*}
+		
+		Considerando $\alpha =  \frac{\pi}{2}$, é possível determinar a expressão da tensão $u_{C}(t)$, tendo então 
+		\begin{gather*}
+			u_C(t) = -R \left[ I\e^{-\beta t} \cos{\left(\omega t + \frac{\pi}{2}\right)} \right] - L \left[ -\beta I\e^{-\beta t} \cos{\left(\omega t + \frac{\pi}{2}\right)} - \omega I\e^{-\beta t} \sin{\left(\omega t + \frac{\pi}{2}\right)}\right] \\ \eq
+			u_C(t) = I\e^{-\beta t} \left[ \left( -R +\beta L\right) \cos{\left(\omega t + \frac{\pi}{2}\right)}  + \omega L\sin{\left(\omega t + \frac{\pi}{2}\right)} \right] \numberthis \label{Uc_RLC}
+			\end{gather*}
+			
+		De \eqref{cond_inicial_tensão}, retira-se 
+		\begin{gather*}
+			 I\e^{-\beta \times 0} \left[ \cancelto{0}{\left( -R +\beta L\right) \cos{\left(\omega \times 0 + \frac{\pi}{2}\right)}}  + \omega L \cancelto{1}{\sin{\left(\omega \times 0 + \frac{\pi}{2}\right)}} \right] = 4 \\ \eq
+			 I\omega L = 4 \eq I = \frac{4}{\omega L} \implies I \approx \SI{10.328e-3}{\ampere}.
+		\end{gather*}
+		
+		Por fim, obtém-se a expressão da tensão $u_{C}(t)$ e de $i(t)$, com as devidas aproximações, dadas por
+		
+		\begin{equation}
+   			\begin{cases}
+      			i(t) &\approx \num{10.328e-3}\e^{-\num{12.5e3}t} \cos{(\num{48.412e3} t + \frac{\pi}{2})} \\
+    			\\u_C(t) &\approx \num{10.328e-3}\e^{-\num{12.5e3} t} \left[ -100 \cos{\left(\num{48.412e3} t + \frac{\pi}{2}\right)}  + \num{387.296}\sin{\left(\num{48.412e3}t + \frac{\pi}{2}\right)} \right] \\ 
+			&\approx \num{1.0328e-3}\e^{-\num{12.5e3} t} \cos{\left(\num{48.412e3} t + \frac{\pi}{2}\right)}  + \num{4}\sin{\left(\num{48.412e3}t + \frac{\pi}{2}\right)}
+  			\end{cases}       
+		\end{equation}
+		
 	% e)
 	\subsubsection{}
-
+	
+		\par
+		De modo a que a solução do regime livre seja do tipo aperiódico limite, é necessário que $\beta = \omega_{0}$. Assim, utilizando a resolução da alínea c), tem-se 
+		\begin{align*}
+			 R_0 = R = 2\sqrt{\frac{L}{C}} = \SI{800}{\ohm}.
+		\end{align*}
+		
+		Assim, equação característica \eqref{eq_caract_2ordem_sol} tem 2 raízes reais iguais, ou seja multiplicidade 2, e, portanto, a solução da equação diferencial é dada por
+		\begin{align*}
+			i ( t ) = ( A + B t ) \e ^ { s t }
+		\end{align*}
 
 	%Ver \autoref{fig:figure-example}
 
