@@ -18,6 +18,7 @@
 \usepackage{float}
 \usepackage[tableposition=top]{caption}
 \usepackage{amsmath}
+\usepackage[makeroom]{cancel}
 	%\allowdisplaybreaks
 \usepackage[arrowdel]{physics}
 \usepackage{esint}
@@ -208,9 +209,131 @@
 	\subsubsection{}
 
 	% 2.2
-	\subsection{}
+	\subsection{Circuito RLC-série}
 	% a)
 	\subsubsection{}
+	
+		\par
+		Para $t \geq 0$, não existe a fonte de alimentação ($U_G = 0$) e portanto, ao aplicar a Lei da Indução Magnética (considerando o circuito linear), obtém-se 
+		
+		\begin{align*}
+			&\ointclockwise_{\vec{l}} \vec{E} \vdot \dd{\vec{l}} = - \dv{\psi_{\vec{l}}}{t} \\ \eq
+			&u_R(t) + u_C(t) + 0 = - \dv{\psi_{\vec{l}}}{t} \\ \eq
+			&Ri(t) + \frac{1}{C} \int i(t) dt + 0 = -L \dv{i(t)}{t} \\ \eq
+			&L \dv{i(t)}{t} + Ri(t) + \frac{1}{C} \int i(t) dt = 0 \\ 
+		\end{align*}
+	
+		Fazendo a derivada em ordem ao tempo, obtém-se a equação diferencial de segunda ordem dada por
+		
+		\begin{align*}
+			&L \dv[2]{I(t)}{t} + R\dv{I(t)}{t} + \frac{1}{C}i(t) = 0 \\ \eq
+			&\dv[2]{I(t)}{t} + 2\frac{R}{2L}\dv{i(t)}{t} + \frac{1}{LC}i(t) = 0 \\ \eq
+			&\dv[2]{I(t)}{t} + 2\beta \dv{i(t)}{t} + \omega_{0}^{2} i(t) = 0, \numberthis \label{eq_dif_2ordem}
+		\end{align*}
+	
+		sendo $\beta$ o coeficiente de amortecimento e $\omega_{0}$ a frequência angular das oscilações não amortecidas. Assim, o valor de $\omega_{0}$ é dado por
+		
+		\begin{align*}
+			\omega_{0} = \frac{1}{\sqrt{LC}} = \SI{50e3}{\radian\per\second}.
+		\end{align*}
+	
+	% b)
+	\subsubsection{}
+	
+		\par
+		Sendo necessária a continuidade da energia elétrica no condensador e da energia magnética na bobina, a tensão no condensador e a corrente na bobina têm de ser idênticos no instante imediatamente antes à comutação do interruptor $S$ e no instante imediatamente depois, ou seja
+		\begin{align*}
+			u_{C}(0^{+}) &= u_{C}(0^{-})\\
+			  i_{L}(0^{+}) &= i_{L}(0^{-}).
+		\end{align*}
+		
+		Tendo sido estabelecida a tensão estacionária do condensador, não existe corrente no circuito, portanto tem-se 
+		\begin{align*}
+			i(0^{+}) = i(0^{-}) = \SI{0}{\ampere}. \numberthis \label{cond_inicial_corrente}
+		\end{align*}
+		
+		Consequentemente, não havendo corrente no circuito, a tensão fornecida pela fonte estará aos terminais do condensador, obtendo assim
+		\begin{align*}
+			u_{C}(0^{+}) = u_{C}(0^{-}) = \SI{4}{\volt}. \numberthis \label{cond_inicial_tensão}
+		\end{align*}
+		
+		Para $t > 0$, devido à comutação do interruptor $S$, o novo circuito deixa de estar alimentado, havendo apenas regime livre, não existindo regime forçado, ou seja $i_f(t) = 0$.
+		
+	% c)
+	\subsubsection{}
+	
+		\par
+		Existindo apenas regime livre, fazendo $i(t) = e^{st}$ em \ref{eq_dif_2ordem}, obtém-se a equação característica dada por
+		\begin{align*}
+			&s^{2} + 2\beta s + \omega_{0}^{2} = 0 .\numberthis \label{eq_caract_2ordem_sol}
+		\end{align*}
+		
+		Aplicando a fórmula resolvente, obtém-se as raízes da equação \ref{eq_caract_2ordem_sol}, dadas por
+		\begin{align*}
+			&s =   -\beta \pm \sqrt{ \beta^{2} - \omega_{0}^{2}}, \numberthis \label{sol_eq_caract_2ordem}
+		\end{align*}
+		
+		originando 3 soluções distintas.
+		
+		\begin{itemize}
+			\item $\beta > \omega_{0} \implies \frac{R}{2L} > \frac{1}{\sqrt{LC}} \eq R > 2 
+			\sqrt{\frac{L}{C}}$, gerando um regime aperiódico 
+			
+			\item $\beta = \omega_{0} \implies \frac{R}{2L} = \frac{1}{\sqrt{LC}} \eq R = 2 
+			\sqrt{\frac{L}{C}}$, gerando um regime aperiódico limite
+			
+			\item $\beta < \omega_{0} \implies \frac{R}{2L} < \frac{1}{\sqrt{LC}} \eq R < 2 
+			\sqrt{\frac{L}{C}}$, gerando um regime oscilatório amortecido
+		\end{itemize}
+		
+	% d)
+	\subsubsection{}
+	
+		\par
+		Para $R = \SI{200}{\ohm} $, obtém-se $\beta = \frac{200}{2 \times \num{8e-3}} = \SI{12.5e3}{\neper\per\second}$. Como $\beta < \omega_{0}$, verifica-se que a solução é do tipo oscilatório amortecido. Sendo do tipo oscilatório amortecido, de \ref{sol_eq_dif_2ordem} retira-se 
+		\begin{align*}
+			&s =   -\beta \pm \jj \omega, 
+		\end{align*}
+		
+		onde $\omega = \sqrt{\omega_{0}^{2} - \beta^{2}}$ é a frequência angular das oscilações amortecidas. Assim, o valor deste é dado por
+		\begin{align*}
+			\omega = \sqrt{\omega_{0}^{2} - \beta^{2}} \approx \SI{48.412e3}{\radian\per\second}.
+		\end{align*}
+		
+		Uma vez que a solução da equação característica são 2 raízes complexas conjugadas, a solução da equação diferencial é dada por
+		\begin{align*}
+			&i(t) = \bar{I_1}\e^{st} + \bar{I_2}\e^{s^{*}t} 
+		\end{align*}
+		
+		Como i(t) é real, $\bar{I_{1}}$ e $\bar{I_{2}}$ são necessariamente complexos conjugados. Definindo $\bar{I} = 2\bar{I_1} = I\e^{j\alpha}$, tem-se
+		\begin{align*}
+			& i(t) = \Re{\bar{I}\e^{st}} \\ \eq
+			& i(t) = \Re{I\e^{j\alpha}\e^{(-\beta + j\omega)t}} \\ \eq
+			& i(t) = \Re{I\e^{-\beta t}\e^{j(\omega t + \alpha)}} \\ \eq
+			& i(t) = I\e^{-\beta t} \cos{(\omega t + \alpha)}. \numberthis \label{sol_eq_dif_2ordem}
+		\end{align*}
+		
+		Verifica-se que, de \ref{sol_eq_dif_2ordem}, a corrente i(t) terá amplitudes máximas (em módulo) quando o valor do coseno for máximo ou mínimo. Considerando a corrente i(t) apresentada na figura (INSERT REF), verifica-se que os valores absolutos dos máximos da função são dados por
+		\begin{gather*}
+			 A_1 = I\e^{-\beta \frac{T}{4}} \\ 
+			 A_2 = I\e^{-\beta(\frac{T}{4} + \frac{T}{2})} \\ 
+			 A_3 = I\e^{-\beta(\frac{T}{4} + T)}\\ 
+			\vdots \\
+			 A_n = I\e^{-\beta(\frac{T}{4} + (n-1)\frac{T}{2})} \\
+			 \implies \frac{A_1}{A_n} = \frac{\cancel{I\e^{-\beta \frac{T}{4}}}}{\cancel{I\e^{-\beta\frac{T}{4}}} \e^{-\beta(n-1)\frac{T}{2}}} = \e^{\beta(n-1)\frac{T}{2}} \\ \eq
+			 \left(\frac{A_1}{A_n}\right)^{\frac{1}{(n-1)}} = \e^{\beta\frac{T}{2}} = \e^\lambda,
+		\end{gather*}
+		
+		sendo $\lambda$ o decremento logarítmico, dado por 
+		\begin{align*}
+			 \lambda = \beta \frac{T}{2} = \SI{0.811}{\neper}.
+		\end{align*}
+		
+		Tendo em conta as condições iniciais estabelecidas \ref{cond_inicial_corrente} e \ref{cond_inicial_tensão}, é possível determinar a corrente i(t) e a tensão $u_{C}$. Para determinar a constante de integração de i(t), recorre-se ao regime forçado quando $t < 0$. Assim, aplicando 
+		
+	% e)
+	\subsubsection{}
+
 
 	%Ver \autoref{fig:figure-example}
 
