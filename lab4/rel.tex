@@ -365,15 +365,15 @@
 		Tendo em conta as condições iniciais estabelecidas em \eqref{cond_inicial_corrente} e \eqref{cond_inicial_tensão}, é possível determinar a corrente i(t) e a tensão $u_{C}$. Para determinar a constante de integração de i(t), recorre-se ao regime forçado quando $t < 0$. Assim, da aplicação da Lei da Indução no caminho $l$ previamente escolhido, obtém-se 
 		\begin{gather*}
 			u_R(t) + u_C(t) + 0 = - \dv{\psi_{\vec{l}}}{t} \\ \eq
-			u_C(t) = -Ri(t) - L\dv{i(t)}{t} \\ \eq
-			u_C(t) = -R \left[ I\e^{-\beta t} \cos{(\omega t + \alpha)} \right] - L \left[ -\beta I\e^{-\beta t} \cos{(\omega t + \alpha)} - \omega I\e^{-\beta t} \sin{(\omega t + \alpha)}\right]
+			u_C(t) = -Ri(t) - L\dv{i(t)}{t} \numberthis \label{eq_Uc_lei_ind} \\ \eq 
+			u_C(t) = -R \left[ I\e^{-\beta t} \cos{(\omega t + \alpha)} \right] - L \left[ -\beta I\e^{-\beta t} \cos{(\omega t + \alpha)} - \omega I\e^{-\beta t} \sin{(\omega t + \alpha)}\right] \numberthis \label{eq_Uc_RLC}
 		\end{gather*}
 		
 		De \eqref{cond_inicial_corrente}, retira-se 
-		\begin{align*}
-			 I\e^{-\beta \times 0} \cos{(\omega \times 0 + \alpha)} = 0 \\ \eq
+		\begin{gather*}
+			 i(0) = I\e^{-\beta \times 0} \cos{(\omega \times 0 + \alpha)} = 0 \\ \eq
 			 I\cos{(\alpha)} = 0 \implies \alpha = \pm \frac{\pi}{2}
-		\end{align*}
+		\end{gather*}
 		
 		Considerando $\alpha =  \frac{\pi}{2}$, é possível determinar a expressão da tensão $u_{C}(t)$, tendo então 
 		\begin{gather*}
@@ -381,9 +381,9 @@
 			u_C(t) = I\e^{-\beta t} \left[ \left( -R +\beta L\right) \cos{\left(\omega t + \frac{\pi}{2}\right)}  + \omega L\sin{\left(\omega t + \frac{\pi}{2}\right)} \right] \numberthis \label{Uc_RLC}
 			\end{gather*}
 			
-		De \eqref{cond_inicial_tensão}, retira-se 
+		De \eqref{cond_inicial_tensão} e de \eqref{Uc_RLC}, retira-se 
 		\begin{gather*}
-			 I\e^{-\beta \times 0} \left[ \cancelto{0}{\left( -R +\beta L\right) \cos{\left(\omega \times 0 + \frac{\pi}{2}\right)}}  + \omega L \cancelto{1}{\sin{\left(\omega \times 0 + \frac{\pi}{2}\right)}} \right] = 4 \\ \eq
+			u_{C}(0) = I\e^{-\beta \times 0} \left[ \cancelto{0}{\left( -R +\beta L\right) \cos{\left(\omega \times 0 + \frac{\pi}{2}\right)}}  + \omega L \cancelto{1}{\sin{\left(\omega \times 0 + \frac{\pi}{2}\right)}} \right] = 4 \\ \eq
 			 I\omega L = 4 \eq I = \frac{4}{\omega L} \implies I \approx \SI{10.328e-3}{\ampere}.
 		\end{gather*}
 		
@@ -408,9 +408,46 @@
 		
 		Assim, equação característica \eqref{eq_caract_2ordem_sol} tem 2 raízes reais iguais, ou seja multiplicidade 2, e, portanto, a solução da equação diferencial é dada por
 		\begin{align*}
-			i ( t ) = ( A + B t ) \e ^ { s t }
+			i ( t ) = ( A + B t ) \e ^ { s t }, \numberthis \label{eq_i_regime_ap_limite}
 		\end{align*}
 
+		onde, de \eqref{sol_eq_caract_2ordem}, tendo $\beta = \omega_{0}$, se obtém $s = - \beta$.
+		
+		De \eqref{cond_inicial_corrente}, retira-se 
+		\begin{gather*}
+			( A + B \times 0 ) \e ^ { - \beta \times 0 } = 0 \implies A = 0. \\ \eq
+			i(t) = Bt\e^{-\beta t} \numberthis \label{eq_i_regime_ap_limite_2}
+		\end{gather*}
+		
+		Substituindo \eqref{eq_i_regime_ap_limite_2} em \eqref{eq_Uc_lei_ind}, obtém-se
+		\begin{align*}
+			 u_C(t) &= -R\left(Bt\e^{-\beta t}\right) - L\left( B\e^{-\beta t} -\beta Bt\e^{-\beta t} \right) \\ \eq
+			u_C(t)  &= B\e^{-\beta t} \left(  -Rt - L +\beta t  \right)
+		\end{align*}
+		
+		De \eqref{cond_inicial_tensão}, retira-se 
+		\begin{align*}
+			 u_C(0)  &= B\e^{-\beta \times 0} \left(  -R\times 0 - L +\beta \times 0  \right) = 4 \\ \eq 
+			 -BL &= 4 \eq B = \frac{-4}{L} = -500.
+		\end{align*}
+		
+		Assim, tendo o valor de ambas as constantes de integração e fazendo a substituição em \eqref{eq_i_regime_ap_limite}, obtém-se finalmente a expressão da corrente $i(t)$, dada por 
+		\begin{align*}
+			i(t) = -500t\e^{-\num{50e3}t} \si{\ampere}. \numberthis \label{eq_i(t)_final}
+		\end{align*}
+		
+		Fazendo a derivada em ordem ao tempo de \eqref{eq_i_regime_ap_limite_2} e igualando a 0, obtém-se o instante $t_{min}$ dado por
+		\begin{gather*}
+			\dv{i(t)}{dt} = B\left( \e^{-\beta t} - \beta t e^{-\beta t}\right) = 0 \\ \eq
+			e^{-\beta t} = \beta t\e^{-\beta t} \\ \eq
+			t = \frac{1}{\beta} = \SI{20}{\micro\second}.
+		\end{gather*}
+		
+		Substituindo em \eqref{eq_i(t)_final}, obtém-se o valor de $i(t_{min})$
+		\begin{gather*}
+			i(t_{min}) = -500t_{min}\e^{-\num{50e3}t_{min}} = \SI{-3.679}{\milli\ampere}.
+		\end{gather*}
+		
 	%Ver \autoref{fig:figure-example}
 
 	%\printbibliography
