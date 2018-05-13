@@ -8,10 +8,10 @@ Uef = 2;
 
 Z = sqrt(R^2 + (w*L)^2);
 argZ = atan2(w*L, R);
-phi = argZ
-rad2deg(phi)
-I = -sqrt(2)*Uef/Z * cos(alfa - argZ)
-tau = L/R
+phi = argZ;
+rad2deg(phi);
+I = -sqrt(2)*Uef/Z * cos(alfa - argZ);
+tau = L/R;
 
 %{
 t = 0 : 1e-6: 1e-3;
@@ -42,8 +42,14 @@ I0 = (sqrt(2)*Uef/Z * cos(-pi/2 + 2*k*pi - phi))/(exp(-1*(-pi/2 + 2*k*pi - alfa)
 %}
 
 % 1. c)
+%{
 for k = [0 1 2 3 4]
     k
     text = (k*pi-alfa+phi)/w
     Iext = sqrt(2)*Uef/Z * ((-1)^k - cos(alfa - phi)*exp(-text/tau))
 end
+%}
+
+di = @(t) (sqrt(2)*Uef/Z) * (-w*sin(w*t + alfa - phi) + cos(alfa - phi)/tau * exp(-t/tau));
+ddi = @(t) (sqrt(2)*Uef/Z) * (-w^2*cos(w*t + alfa - phi) - cos(alfa - phi)/tau^2 * exp(-t/tau));
+[x, dif_x] = metodo_newton(di, ddi, 90e-6, 1e-6)
