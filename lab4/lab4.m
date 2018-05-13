@@ -15,7 +15,7 @@ tau = L/R;
 
 %{
 t = 0 : 1e-6: 1e-3;
-h = figure('renderer','painters','pos',[0 0 800 600])
+h = figure('renderer','painters','pos',[0 0 800 600]);
 hold on;
 grid on;
 plot(t, (sqrt(2)*Uef/Z)*(cos(w.*t+alfa-phi) - cos(alfa - phi)*exp(-1*(t/tau))));
@@ -32,14 +32,7 @@ print(h,'rl','-dpdf','-r0');
 %}
 
 % 1. b)
-%{
-k = -2
-I0 = (sqrt(2)*Uef/Z * cos(-pi/2 + 2*k*pi - phi))/(exp(-1*(-pi/2 + 2*k*pi - alfa)/(w*tau)))
-k = 0
-I0 = (sqrt(2)*Uef/Z * cos(-pi/2 + 2*k*pi - phi))/(exp(-1*(-pi/2 + 2*k*pi - alfa)/(w*tau)))
-k = -1e9
-I0 = (sqrt(2)*Uef/Z * cos(-pi/2 + 2*k*pi - phi))/(exp(-1*(-pi/2 + 2*k*pi - alfa)/(w*tau)))
-%}
+I0 = sqrt(2)*Uef/Z * cos(-pi/2 - phi)
 
 % 1. c)
 %{
@@ -53,3 +46,30 @@ end
 di = @(t) (sqrt(2)*Uef/Z) * (-w*sin(w*t + alfa - phi) + cos(alfa - phi)/tau * exp(-t/tau));
 ddi = @(t) (sqrt(2)*Uef/Z) * (-w^2*cos(w*t + alfa - phi) - cos(alfa - phi)/tau^2 * exp(-t/tau));
 [x, dif_x] = metodo_newton(di, ddi, 90e-6, 1e-6)
+
+% 1.2
+% stuff
+R = 200;
+L = 8e-3;
+C = 50e-9;
+UG = 4;
+beta = R/(2*L)
+w0 = 1/sqrt(L*C)
+w = sqrt(w0^2 - beta^2)
+alfa = pi/2;
+I = UG/(w*L)
+
+%{
+t = 0 : 1e-6: 7*(1/beta);
+h = figure('renderer','painters','pos',[0 0 800 600]);
+hold on;
+grid on;
+plot(t, I.*exp(-beta.*t).*cos(w.*t+alfa));
+xlabel('t [s]');
+ylabel('i(t) [A]');
+title(sprintf('Regime transitório do circuito RLC série (relativo à corrente i) em regime oscilatório amortecido\n'));
+set(h,'Units','Inches');
+pos = get(h,'Position');
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)]);
+print(h,'rlc','-dpdf','-r0')
+%}

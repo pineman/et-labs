@@ -58,15 +58,15 @@
 		\textsc{\bfseries\LARGE Instituto Superior Técnico}\\[1cm] % Name of your university/college
 		\includegraphics[height=1.5cm]{IST_Logo.pdf}\\[2.5cm]
 
-		\textsc{\large Engenharia Eletrotécnica e de Computadores}\\[0.5cm] % Major heading such as course name
+		\textsc{\Large Engenharia Eletrotécnica e de Computadores}\\[0.5cm] % Major heading such as course name
 		\textsc{\Large Eletrotecnia Teórica}\\[0.5cm] % Minor heading such as course title
 		\textsc{\large 2017/2018 2º Semestre}\\[2cm]
 
 		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
 		\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
-			\textsc{\Huge \bfseries 4º Trabalho Laboratorial}\\[0.2cm]
+			\textsc{\Huge 4º Trabalho Laboratorial}\\[0.2cm]
 			\bigskip
-			\textsc{\large \bfseries Regimes Transitórios}\\[0.2cm]
+			\textsc{\Large Regimes Transitórios}\\[0.2cm]
 		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
 		\rule{\textwidth}{1.6pt}\\[6cm]
 
@@ -82,8 +82,8 @@
 			\end{flushleft}
 		\end{minipage}\\[0.5cm]
 
-		\large \bfseries Laboratório segunda-feira, 09h30-11h30, Grupo D\\
-		\large 14 de maio de 2018\\[1cm]
+		\large \textsc{Laboratório segunda-feira, 09h30-11h30, Grupo D\\
+		14 de maio de 2018}\\[1cm]
 		\setcounter{page}{0}
 	\end{titlepage}
 
@@ -96,8 +96,8 @@
 	\subsubsection{}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.7\linewidth]{rl.png}
-			\caption{Circuito RL série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$}
+			\includegraphics[width=0.55\linewidth]{rl.png}
+			\caption{Circuito RL série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$ (retirado do enunciado e alterado)}
 			\label{fig:circ_rl}
 		\end{figure}
 		\par
@@ -133,13 +133,13 @@
 		\begin{align*}
 			&\bar{I}_f = \dfrac{\bar{U}_g}{\bar{Z}} = \dfrac{\sqrt{2}U_{ef}}{Z} e^{\jj\left(\alpha - \varphi\right)} \\ \implies
 			&i_f(t) = \Re{\bar{I}_f \e^{\jj \omega t}} = \Re{\dfrac{\sqrt{2}U_{ef}}{Z} \e^{\jj\left(\omega t + \alpha - \varphi\right)}} = \\ \eq
-			&i_f(t) = \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega t + \alpha - \varphi\right),
+			&i_f(t) = \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega t + \alpha - \varphi\right), \numberthis \label{eq:trans_RL_forc}
 		\end{align*}
 		em que $- \varphi = \SI{-1.46}{\radian} = \SI{-83.6}{\degree}$ é a desfasagem entre a tensão $u_g(t)$ e $i(t)$ em regime forçado.
 		\par
 		O regime livre é a solução da equação homogénea de \eqref{eq:trans_RL}
 		\begin{align*}
-			0 = R i(t) + L \dv{i(t)}{t}. \numberthis \label{eq:trans_RL_hom}.
+			0 = R i(t) + L \dv{i(t)}{t}. \numberthis \label{eq:trans_RL_hom}
 		\end{align*}
 		\par
 		A equação diferencial em \eqref{eq:trans_RL_hom} tem uma solução do tipo exponencial e, portanto, substituindo $i(t) = \e^{st}$, a sua equação característica é
@@ -168,8 +168,10 @@
 		\begin{gather*}
 			i(t) = i_f(t) + i_l(t) = \\ =
 			\dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega t + \alpha - \varphi\right) - \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(- \frac{\pi}{2} - \varphi\right) \e^{-\frac{t}{\tau}} \\ \eq
-			i(t) = \dfrac{\sqrt{2}U_{ef}}{Z} \left[ \cos\left(\omega t + \alpha - \varphi\right) - \cos\left(\alpha - \varphi\right)e^{-\frac{t}{\tau}}\right] . \numberthis \label{eq:trans_RL_sol}
+			i(t) = \dfrac{\sqrt{2}U_{ef}}{Z} \left[ \cos\left(\omega t + \alpha - \varphi\right) - \cos\left(\alpha - \varphi\right)e^{-\frac{t}{\tau}}\right] . \numberthis \label{eq:trans_RL_sol} \\ \eq
+			i(t) \approx \num{4.474e-4} \left[ \cos\left(2\pi\num{50e3}t - \frac{\pi}{2} - 1.46\right) + 0.99\exp{-\frac{t}{\num{0.286e-3}}}\right],
 		\end{gather*}
+		como representado na \autoref{fig:rl}.
 
 		\begin{figure}[H]
 			\centering
@@ -181,7 +183,7 @@
 	% b)
 	\subsubsection{}
 	\par
-	Supondo que os extermos do regime transitório de $i(t)$ em \eqref{eq:trans_RL_sol} se dão nos extremos da função cosseno, os instantes $t$ de extremo são dados por
+	Supondo que os extremos do regime transitório de $i(t)$ em \eqref{eq:trans_RL_sol} se dão nos extremos da função cosseno, os instantes $t$ de extremo são dados por
 	\begin{align*}
 		&\cos\left(\omega t + \alpha - \varphi\right) = \pm 1 \\ \eq
 		&\omega t + \alpha - \varphi = k\pi, k \in \mathbb{Z} \\ \eq
@@ -230,9 +232,49 @@
 
 	% d)
 	\subsubsection{}
-
+	\par
+	Como a tensão $u_g(t)$ é desligada quando estava a passar por zero de valores negativos para positivos, o regime forçado do circuito será nulo e o instante quando é desligado o gerador é
+	\begin{align*}
+		&\sqrt{2}U_{ef} \cos\left(\omega t_0 + \alpha\right) = 0 \\ \eq
+		&\omega t_0 + \alpha = \dfrac{-\pi}{2} + k\pi, k \in \mathbb{Z} \\ \eq
+		&t_0 = \dfrac{- \frac{\pi}{2} + k\pi - \alpha}{\omega}. \numberthis \label{eq:t0_varios}
+	\end{align*}
+	\par
+	O novo regime transitório é
+	\begin{align*}
+		i(t) = i_f(t) + i_l(t) = i_l(t).
+	\end{align*}
+	\par
+	A forma de solução regime livre mantém-se, sendo
+	\begin{align*}
+		i_{l_0}(t) = I_0 \e^{-\frac{t}{\tau}}. \numberthis \label{eq:trans_RL_2livre}
+	\end{align*}
+	onde a constante de tempo também se mantém, $\tau = \frac{L}{R} = \SI{0.286}{\milli\second}$.
+	\par
+	Para determinar a constante de integração $I_0$, novamente impõe-se a condição de continuidade da energia magnética na bobina
+	\begin{align*}
+		i(t_0^-) = i(t_0+) = i_{l_0}(t_0),
+	\end{align*}
+	e, como quando gerador foi desligado, o regime livre determinado na alínea a) já estava extinguido, ou seja, só existia regime forçado
+	\begin{align*}
+		i(t_0^-) = i_f(t_0) = \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\omega t_0 + \alpha - \varphi\right) = i_{l_0}(t_0^+) = I_0 \e^{-\frac{t_0}{\tau}}.
+	\end{align*}
+	\par
+	Existem vários instantes $t_0$ quando o gerador poderá ter sido desligado, como visto em \eqref{eq:t0_varios}. Considerando um novo referencial temporal em que $t_0 = 0$, temos
+	\begin{align*}
+		I_0 = \dfrac{\sqrt{2}U_{ef}}{Z} \cos\left(\alpha - \varphi\right) \approx \SI{-0.445}{\milli\ampere}
+	\end{align*}
+	\par
+	Constata-se que esta segunda constante de integração é simétrica da encontrada na alínea a). Tal faz sentido porque, dum ponto de vista energético, na alínea a), o circuito passava dum estado descarregado para um estado carregado e, nesta alínea, o contrário. Além disso, o gerador foi comutado exatamente na mesma fase da tensão $u_g$, o que justifica a igualdade em módulo dos dois regimes livres. Apenas que na situação em a), a exponencial era positiva, "carregando" a bobina, e nesta alínea a exponencial é negativa, "descarregando" a bobina.
 	% e)
 	\subsubsection{}
+	\par
+	Para $t = \tau$ no regime livre encontrado em \eqref{eq:trans_RL_2livre}
+	\begin{align*}
+		i_{l_0}(\tau) = I_0\e^{-\frac{\tau}{\tau}} = I_0 \e^{-1} = \dfrac{I_0}{\e}
+	\end{align*}
+	\par
+	Observa-se que, para qualquer regime livre com esta forma geral, para $t = \tau$, o valor da variável será $\frac{1}{e}\% \approx 36,8\%$ do valor máximo inicial.
 
 	% 2.2
 	\subsection{Circuito RLC-série}
@@ -240,7 +282,7 @@
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.7\linewidth]{rlc.png}
-			\caption{Circuito RLC série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$}
+			\caption{Circuito RLC série em estudo, em que $f = \SI{5}{\kilo\hertz}$ e $U_{ef} = \SI{2}{\volt}$ (retirado do enunciado e alterado)}
 			\label{fig:circ_rlc}
 		\end{figure}
 	% a)
@@ -309,21 +351,21 @@
 		originando 3 soluções distintas.
 
 		\begin{itemize}
-			\item $\beta > \omega_{0} \implies \frac{R}{2L} > \frac{1}{\sqrt{LC}} \eq R > 2
-			\sqrt{\frac{L}{C}}$, gerando um regime aperiódico
+			\item $\beta > \omega_{0} \implies \dfrac{R}{2L} > \dfrac{1}{\sqrt{LC}} \eq R > 2
+			\sqrt{\dfrac{L}{C}}$, gerando um regime aperiódico
 
-			\item $\beta = \omega_{0} \implies \frac{R}{2L} = \frac{1}{\sqrt{LC}} \eq R = 2
-			\sqrt{\frac{L}{C}}$, gerando um regime aperiódico limite
+			\item $\beta = \omega_{0} \implies \dfrac{R}{2L} = \dfrac{1}{\sqrt{LC}} \eq R = 2
+			\sqrt{\dfrac{L}{C}}$, gerando um regime aperiódico limite
 
-			\item $\beta < \omega_{0} \implies \frac{R}{2L} < \frac{1}{\sqrt{LC}} \eq R < 2
-			\sqrt{\frac{L}{C}}$, gerando um regime oscilatório amortecido
+			\item $\beta < \omega_{0} \implies \dfrac{R}{2L} < \dfrac{1}{\sqrt{LC}} \eq R < 2
+			\sqrt{\dfrac{L}{C}}$, gerando um regime oscilatório amortecido
 		\end{itemize}
 
 	% d)
 	\subsubsection{}
 
 		\par
-		Para $R = \SI{200}{\ohm} $, obtém-se $\beta = \frac{200}{2 \times \num{8e-3}} = \SI{12.5e3}{\neper\per\second}$. Como $\beta < \omega_{0}$, verifica-se que a solução é do tipo oscilatório amortecido. Sendo do tipo oscilatório amortecido, de \ref{sol_eq_dif_2ordem} retira-se
+		Para $R = \SI{200}{\ohm} $, obtém-se $\beta = \dfrac{200}{2 \times \num{8e-3}} = \SI{12.5e3}{\neper\per\second}$. Como $\beta < \omega_{0}$, verifica-se que a solução é do tipo oscilatório amortecido. Sendo do tipo oscilatório amortecido, de \ref{sol_eq_dif_2ordem} retira-se
 		\begin{align*}
 			&s =   -\beta \pm \jj \omega,
 		\end{align*}
@@ -346,7 +388,7 @@
 			& i(t) = I\e^{-\beta t} \cos{(\omega t + \alpha)}. \numberthis \label{sol_eq_dif_2ordem}
 		\end{align*}
 
-		Verifica-se que, de \ref{sol_eq_dif_2ordem}, a corrente i(t) terá amplitudes máximas (em módulo) quando o valor do coseno for máximo ou mínimo. Considerando a corrente i(t) apresentada na figura (INSERT REF), verifica-se que os valores absolutos dos máximos da função são dados por
+		Verifica-se que, de \ref{sol_eq_dif_2ordem}, a corrente i(t) terá amplitudes máximas (em módulo) quando o valor do coseno for máximo ou mínimo. Considerando a corrente i(t) apresentada na \autoref{fig:i_aten}, verifica-se que os valores absolutos dos máximos da função são dados por
 		\begin{gather*}
 			 A_1 = I\e^{-\beta \frac{T}{4}} \\
 			 A_2 = I\e^{-\beta(\frac{T}{4} + \frac{T}{2})} \\
@@ -362,92 +404,105 @@
 			 \lambda = \beta \frac{T}{2} = \SI{0.811}{\neper}.
 		\end{align*}
 
-		Tendo em conta as condições iniciais estabelecidas em \eqref{cond_inicial_corrente} e \eqref{cond_inicial_tensão}, é possível determinar a corrente i(t) e a tensão $u_{C}$. Para determinar a constante de integração de i(t), recorre-se ao regime forçado quando $t < 0$. Assim, da aplicação da Lei da Indução no caminho $l$ previamente escolhido, obtém-se 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.7\linewidth]{aten.png}
+			\caption{Representação do corrente $i(t)$ para o caso oscilatório amortecido (retirado do enunciado)}
+			\label{fig:i_aten}
+		\end{figure}
+
+		Tendo em conta as condições iniciais estabelecidas em \eqref{cond_inicial_corrente} e \eqref{cond_inicial_tensão}, é possível determinar a corrente i(t) e a tensão $u_{C}$. Para determinar a constante de integração de i(t), recorre-se ao regime forçado quando $t < 0$. Assim, da aplicação da Lei da Indução no caminho $l$ previamente escolhido, obtém-se
 		\begin{gather*}
 			u_R(t) + u_C(t) + 0 = - \dv{\psi_{\vec{l}}}{t} \\ \eq
-			u_C(t) = -Ri(t) - L\dv{i(t)}{t} \numberthis \label{eq_Uc_lei_ind} \\ \eq 
+			u_C(t) = -Ri(t) - L\dv{i(t)}{t} \numberthis \label{eq_Uc_lei_ind} \\ \eq
 			u_C(t) = -R \left[ I\e^{-\beta t} \cos{(\omega t + \alpha)} \right] - L \left[ -\beta I\e^{-\beta t} \cos{(\omega t + \alpha)} - \omega I\e^{-\beta t} \sin{(\omega t + \alpha)}\right] \numberthis \label{eq_Uc_RLC}
 		\end{gather*}
-		
-		De \eqref{cond_inicial_corrente}, retira-se 
+
+		De \eqref{cond_inicial_corrente}, retira-se
 		\begin{gather*}
 			 i(0) = I\e^{-\beta \times 0} \cos{(\omega \times 0 + \alpha)} = 0 \\ \eq
 			 I\cos{(\alpha)} = 0 \implies \alpha = \pm \frac{\pi}{2}
 		\end{gather*}
-		
-		Considerando $\alpha =  \frac{\pi}{2}$, é possível determinar a expressão da tensão $u_{C}(t)$, tendo então 
+
+		Considerando $\alpha =  \frac{\pi}{2}$, é possível determinar a expressão da tensão $u_{C}(t)$, tendo então
 		\begin{gather*}
 			u_C(t) = -R \left[ I\e^{-\beta t} \cos{\left(\omega t + \frac{\pi}{2}\right)} \right] - L \left[ -\beta I\e^{-\beta t} \cos{\left(\omega t + \frac{\pi}{2}\right)} - \omega I\e^{-\beta t} \sin{\left(\omega t + \frac{\pi}{2}\right)}\right] \\ \eq
 			u_C(t) = I\e^{-\beta t} \left[ \left( -R +\beta L\right) \cos{\left(\omega t + \frac{\pi}{2}\right)}  + \omega L\sin{\left(\omega t + \frac{\pi}{2}\right)} \right] \numberthis \label{Uc_RLC}
 			\end{gather*}
-			
-		De \eqref{cond_inicial_tensão} e de \eqref{Uc_RLC}, retira-se 
+
+		De \eqref{cond_inicial_tensão} e de \eqref{Uc_RLC}, retira-se
 		\begin{gather*}
 			u_{C}(0) = I\e^{-\beta \times 0} \left[ \cancelto{0}{\left( -R +\beta L\right) \cos{\left(\omega \times 0 + \frac{\pi}{2}\right)}}  + \omega L \cancelto{1}{\sin{\left(\omega \times 0 + \frac{\pi}{2}\right)}} \right] = 4 \\ \eq
 			 I\omega L = 4 \eq I = \frac{4}{\omega L} \implies I \approx \SI{10.328e-3}{\ampere}.
 		\end{gather*}
-		
+
 		Por fim, obtém-se a expressão da tensão $u_{C}(t)$ e de $i(t)$, com as devidas aproximações, dadas por
-		
 		\begin{equation}
    			\begin{cases}
       			i(t) &\approx \num{10.328e-3}\e^{-\num{12.5e3}t} \cos{(\num{48.412e3} t + \frac{\pi}{2})} \\
-    			\\u_C(t) &\approx \num{10.328e-3}\e^{-\num{12.5e3} t} \left[ -100 \cos{\left(\num{48.412e3} t + \frac{\pi}{2}\right)}  + \num{387.296}\sin{\left(\num{48.412e3}t + \frac{\pi}{2}\right)} \right] \\ 
+    			\\u_C(t) &\approx \num{10.328e-3}\e^{-\num{12.5e3} t} \left[ -100 \cos{\left(\num{48.412e3} t + \frac{\pi}{2}\right)}  + \num{387.296}\sin{\left(\num{48.412e3}t + \frac{\pi}{2}\right)} \right] \\
 			&\approx \num{1.0328e-3}\e^{-\num{12.5e3} t} \cos{\left(\num{48.412e3} t + \frac{\pi}{2}\right)}  + \num{4}\sin{\left(\num{48.412e3}t + \frac{\pi}{2}\right)}
-  			\end{cases}       
+  			\end{cases}
 		\end{equation}
-		
+		estando $i(t)$ representado na \autoref{fig:rlc}.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.7\linewidth]{rlc.pdf}
+			\caption{Gráfico do regime transitório da corrente $i(t)$ no circuito RLC série em regime oscilatório amortecido}
+			\label{fig:rlc}
+		\end{figure}
+
 	% e)
 	\subsubsection{}
-	
+
 		\par
-		De modo a que a solução do regime livre seja do tipo aperiódico limite, é necessário que $\beta = \omega_{0}$. Assim, utilizando a resolução da alínea c), tem-se 
+		De modo a que a solução do regime livre seja do tipo aperiódico limite, é necessário que $\beta = \omega_{0}$. Assim, utilizando a resolução da alínea c), tem-se
 		\begin{align*}
 			 R_0 = R = 2\sqrt{\frac{L}{C}} = \SI{800}{\ohm}.
 		\end{align*}
-		
+
 		Assim, equação característica \eqref{eq_caract_2ordem_sol} tem 2 raízes reais iguais, ou seja multiplicidade 2, e, portanto, a solução da equação diferencial é dada por
 		\begin{align*}
 			i ( t ) = ( A + B t ) \e ^ { s t }, \numberthis \label{eq_i_regime_ap_limite}
 		\end{align*}
 
 		onde, de \eqref{sol_eq_caract_2ordem}, tendo $\beta = \omega_{0}$, se obtém $s = - \beta$.
-		
-		De \eqref{cond_inicial_corrente}, retira-se 
+
+		De \eqref{cond_inicial_corrente}, retira-se
 		\begin{gather*}
 			( A + B \times 0 ) \e ^ { - \beta \times 0 } = 0 \implies A = 0. \\ \eq
 			i(t) = Bt\e^{-\beta t} \numberthis \label{eq_i_regime_ap_limite_2}
 		\end{gather*}
-		
+
 		Substituindo \eqref{eq_i_regime_ap_limite_2} em \eqref{eq_Uc_lei_ind}, obtém-se
 		\begin{align*}
 			 u_C(t) &= -R\left(Bt\e^{-\beta t}\right) - L\left( B\e^{-\beta t} -\beta Bt\e^{-\beta t} \right) \\ \eq
 			u_C(t)  &= B\e^{-\beta t} \left(  -Rt - L +\beta t  \right)
 		\end{align*}
-		
-		De \eqref{cond_inicial_tensão}, retira-se 
+
+		De \eqref{cond_inicial_tensão}, retira-se
 		\begin{align*}
-			 u_C(0)  &= B\e^{-\beta \times 0} \left(  -R\times 0 - L +\beta \times 0  \right) = 4 \\ \eq 
+			 u_C(0)  &= B\e^{-\beta \times 0} \left(  -R\times 0 - L +\beta \times 0  \right) = 4 \\ \eq
 			 -BL &= 4 \eq B = \frac{-4}{L} = -500.
 		\end{align*}
-		
-		Assim, tendo o valor de ambas as constantes de integração e fazendo a substituição em \eqref{eq_i_regime_ap_limite}, obtém-se finalmente a expressão da corrente $i(t)$, dada por 
+
+		Assim, tendo o valor de ambas as constantes de integração e fazendo a substituição em \eqref{eq_i_regime_ap_limite}, obtém-se finalmente a expressão da corrente $i(t)$, dada por
 		\begin{align*}
 			i(t) = -500t\e^{-\num{50e3}t} \si{\ampere}. \numberthis \label{eq_i(t)_final}
 		\end{align*}
-		
+
 		Fazendo a derivada em ordem ao tempo de \eqref{eq_i_regime_ap_limite_2} e igualando a 0, obtém-se o instante $t_{min}$ dado por
 		\begin{gather*}
 			\dv{i(t)}{dt} = B\left( \e^{-\beta t} - \beta t e^{-\beta t}\right) = 0 \\ \eq
 			e^{-\beta t} = \beta t\e^{-\beta t} \\ \eq
 			t = \frac{1}{\beta} = \SI{20}{\micro\second}.
 		\end{gather*}
-		
+
 		Substituindo em \eqref{eq_i(t)_final}, obtém-se o valor de $i(t_{min})$
 		\begin{gather*}
 			i(t_{min}) = -500t_{min}\e^{-\num{50e3}t_{min}} = \SI{-3.679}{\milli\ampere}.
 		\end{gather*}
-		
+
 	%Ver \autoref{fig:figure-example}
 
 	%\printbibliography
